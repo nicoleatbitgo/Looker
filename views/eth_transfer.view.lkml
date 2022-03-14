@@ -17,9 +17,23 @@ view: eth_transfer {
     sql: ${TABLE}."BLOCK_NUMBER" ;;
   }
 
-  dimension: block_timestamp {
-    type: string
-    sql: ${TABLE}."BLOCK_TIMESTAMP" ;;
+  dimension: block_timestamp_convert {
+    type: date
+    sql: to_date(${TABLE}."BLOCK_TIMESTAMP") ;;
+  }
+
+  dimension_group: block_timestamp {
+    type: time
+    timeframes: [
+      raw,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    #datatype: timestamp
+    sql: ${block_timestamp_convert} ;;
   }
 
   dimension: contract_address {
