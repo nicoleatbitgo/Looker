@@ -18,7 +18,7 @@ view: eth_transfer {
   }
 
   dimension: block_timestamp_convert {
-    type: date
+    type: string
     sql: to_date(${TABLE}."BLOCK_TIMESTAMP") ;;
   }
 
