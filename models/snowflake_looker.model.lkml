@@ -11,3 +11,4 @@ datagroup: snowflake_looker_default_datagroup {
 persist_with: snowflake_looker_default_datagroup
 
 explore: eth_transfer {}
+#feawfewa
