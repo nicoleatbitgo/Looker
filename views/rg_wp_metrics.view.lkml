@@ -23,7 +23,7 @@ view: rg_wp_metrics {
   }
 
   measure: metric_value {
-    type: number
+    type: sum
     sql: ${TABLE}."METRIC_VALUE" ;;
   }
 
