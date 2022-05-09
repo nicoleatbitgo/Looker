@@ -37,7 +37,7 @@ view: rg_wp_metrics {
     }
 
     measure: Last_n_weeks {
-      type: number
+      type: sum
       sql: ${TABLE}."LAST_N_WEEKS" ;;
     }
 
