@@ -27,6 +27,11 @@ view: rg_wp_metrics {
     sql: ${TABLE}."DEFINITION" ;;
   }
 
+  dimension: LOB {
+    type: string
+    sql: ${TABLE}."LOB" ;;
+  }
+
   measure: metric_value {
     type: sum
     sql: ${TABLE}."METRIC_VALUE" ;;
