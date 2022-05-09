@@ -37,6 +37,11 @@ view: rg_wp_metrics {
     sql: ${TABLE}."METRIC_VALUE" ;;
   }
 
+  measure: Last_n_weeks {
+    type: sum
+    sql: ${TABLE}."Last_n_weeks" ;;
+  }
+
   measure: count {
     type: count
     drill_fields: []
