@@ -37,8 +37,8 @@ view: rg_wp_metrics {
     }
 
     measure: Last_n_weeks {
-      type: sum
-      sql: ${TABLE}."Last_n_weeks" ;;
+      type: number
+      sql: ${TABLE}."LAST_N_WEEKS" ;;
     }
 
     measure: count {
