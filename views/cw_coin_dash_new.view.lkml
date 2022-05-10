@@ -10,11 +10,13 @@ view: cw_coin_dash_new {
   dimension: enterprise_balance {
     type: number
     sql: ${TABLE}."ENTERPRISE_BALANCE" ;;
+    value_format: "$#,##0.00"
   }
 
   dimension: enterprise_coins {
     type: number
     sql: ${TABLE}."ENTERPRISE_COINS" ;;
+    value_format: "#,##0.00"
   }
 
   dimension: enterprise_positive_wallets {
@@ -30,21 +32,25 @@ view: cw_coin_dash_new {
   dimension: inflow {
     type: number
     sql: ${TABLE}."INFLOW" ;;
+    value_format: "#,##0.00"
   }
 
   dimension: outflow {
     type: number
     sql: ${TABLE}."OUTFLOW" ;;
+    value_format: "#,##0.00"
   }
 
   dimension: paygo_balance {
     type: number
     sql: ${TABLE}."PAYGO_BALANCE" ;;
+    value_format: "$#,##0.00"
   }
 
   dimension: paygo_coins {
     type: number
     sql: ${TABLE}."PAYGO_COINS" ;;
+    value_format: "#,##0.00"
   }
 
   dimension: paygo_wallets {
@@ -65,11 +71,13 @@ view: cw_coin_dash_new {
   dimension: total_balance {
     type: number
     sql: ${TABLE}."TOTAL_BALANCE" ;;
+    value_format:"$#,##0.00"
   }
 
   dimension: total_coins {
     type: number
     sql: ${TABLE}."TOTAL_COINS" ;;
+    value_format: "#,##0.00"
   }
 
   dimension_group: week_ending {
@@ -101,4 +109,17 @@ view: cw_coin_dash_new {
     type: sum
     sql: ${enterprises} ;;
   }
+
+  measure: total_coin_cnt {
+    type: sum
+    sql: ${total_coins} ;;
+    value_format: "#,##0.00"
+  }
+
+  measure: total_balance_usd {
+    type: sum
+    sql: ${total_balance} ;;
+    value_format:"$#,##0.00"
+  }
+
 }
