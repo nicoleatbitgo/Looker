@@ -87,8 +87,18 @@ view: cw_coin_dash_new {
     sql: ${TABLE}."WEEK_ENDING" ;;
   }
 
+  dimension: week_end_date {
+    type: string
+    sql: ${week_ending_date} ;;
+  }
+
   measure: count {
     type: count
     drill_fields: []
+  }
+
+  measure: enterprises_cnt {
+    type: sum
+    sql: ${enterprises} ;;
   }
 }
