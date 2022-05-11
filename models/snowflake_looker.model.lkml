@@ -25,13 +25,13 @@ explore: cw_coin_dash_new {
 }
 
 explore: cw_coin_dash_v2 {
-  label: "Coin Dash New"
+  label: "Coin Dash Coin Level"
 }
 
 explore: cw_coin_dash_base {
-  label: "Coin Dash Base"
+  label: "Coin Dash Enterprise Level"
 }
 
 explore: cw_coin_dash_wallet {
-  label: "Coin Dash Wallet"
+  label: "Coin Dash Wallet Level"
 }
