@@ -4,6 +4,9 @@ connection: "snowflake_looker"
 include: "/views/**/eth_transfer.view"
 include: "/views/**/rg_wp_metrics.view"
 include: "/views/cw_coin_dash_new.view.lkml"
+include: "/views/cw_coin_dash_v2.view.lkml"
+include: "/views/cw_coin_dash_base.view.lkml"
+include: "/views/cw_coin_dash_wallet.view.lkml"
 
 datagroup: snowflake_looker_default_datagroup {
   # sql_trigger: SELECT MAX(id) FROM etl_log;;
@@ -19,4 +22,16 @@ explore: eth_transfer {}
 
 explore: cw_coin_dash_new {
   label: "Coin Dash"
+}
+
+explore: cw_coin_dash_v2 {
+  label: "Coin Dash New"
+}
+
+explore: cw_coin_dash_base {
+  label: "Coin Dash Base"
+}
+
+explore: cw_coin_dash_wallet {
+  label: "Coin Dash Wallet"
 }
