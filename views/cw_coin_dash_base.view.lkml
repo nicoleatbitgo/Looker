@@ -20,7 +20,7 @@ view: cw_coin_dash_base {
   dimension: coin_balance {
     type: number
     sql: ${TABLE}."COIN_BALANCE" ;;
-    value_format: "#,##0.00"
+    value_format: "#,##0"
   }
 
   dimension: coin_balance_bin {

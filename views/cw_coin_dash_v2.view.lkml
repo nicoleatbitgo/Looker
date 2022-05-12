@@ -10,7 +10,7 @@ view: cw_coin_dash_v2 {
   dimension: enterprise_balance {
     type: number
     sql: ${TABLE}."ENTERPRISE_BALANCE" ;;
-    value_format:"$#,##0"
+    value_format:"$#,##0,,\" M\""
   }
 
   dimension: enterprise_coins {
@@ -44,7 +44,7 @@ view: cw_coin_dash_v2 {
   dimension: paygo_balance {
     type: number
     sql: ${TABLE}."PAYGO_BALANCE" ;;
-    value_format:"$#,##0"
+    value_format:"$#,##0,,\" M\""
   }
 
   dimension: paygo_coins {
@@ -71,7 +71,7 @@ view: cw_coin_dash_v2 {
   dimension: total_balance {
     type: number
     sql: ${TABLE}."TOTAL_BALANCE" ;;
-    value_format:"$#,##0"
+    value_format: "$#,##0,,\" M\""
   }
 
   dimension: total_coins {
@@ -119,7 +119,7 @@ view: cw_coin_dash_v2 {
   measure: total_balance_usd {
     type: sum
     sql: ${total_balance} ;;
-    value_format:"$#,##0"
+    value_format: "$#,##0,,\" M\""
   }
 
   measure: enterprise_coin_cnt {
@@ -131,7 +131,7 @@ view: cw_coin_dash_v2 {
   measure: enterprise_balance_usd {
     type: sum
     sql: ${enterprise_balance} ;;
-    value_format:"$#,##0"
+    value_format: "$#,##0,,\" M\""
   }
 
   measure: inflow_volume {
