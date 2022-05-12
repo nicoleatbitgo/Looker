@@ -7,6 +7,7 @@ include: "/views/cw_coin_dash_new.view.lkml"
 include: "/views/cw_coin_dash_v2.view.lkml"
 include: "/views/cw_coin_dash_base.view.lkml"
 include: "/views/cw_coin_dash_wallet.view.lkml"
+include: "/views/*/*.view.lkml"
 
 datagroup: snowflake_looker_default_datagroup {
   # sql_trigger: SELECT MAX(id) FROM etl_log;;
@@ -34,4 +35,8 @@ explore: cw_coin_dash_base {
 
 explore: cw_coin_dash_wallet {
   label: "Coin Dash Wallet Level"
+}
+
+explore: hp_transaction_count {
+  label: "Transaction Count - Enterprise Level"
 }
