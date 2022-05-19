@@ -3,7 +3,6 @@ connection: "snowflake_looker"
 # include all the views
 include: "/views/**/eth_transfer.view"
 include: "/views/**/rg_wp_metrics.view"
-include: "/views/cw_coin_dash_new.view.lkml"
 include: "/views/cw_coin_dash_v2.view.lkml"
 include: "/views/cw_coin_dash_base.view.lkml"
 include: "/views/cw_coin_dash_wallet.view.lkml"
@@ -21,9 +20,6 @@ explore: eth_transfer {}
 #feawfewa
 
 
-explore: cw_coin_dash_new {
-  label: "Coin Dash"
-}
 
 explore: cw_coin_dash_v2 {
   label: "Coin Dash Coin Level"
