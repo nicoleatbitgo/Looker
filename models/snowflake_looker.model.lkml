@@ -40,3 +40,7 @@ explore: cw_coin_dash_wallet {
 explore: hp_transaction_count {
   label: "Transaction Count - Enterprise Level"
 }
+
+explore: hp_auto_debit {
+  label: "Debit Automation Alert"
+}
