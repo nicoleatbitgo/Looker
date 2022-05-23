@@ -40,3 +40,7 @@ explore: hp_transaction_count {
 explore: hp_auto_debit {
   label: "Debit Automation Alert"
 }
+
+explore: hp_auto_debit_transaction_details {
+  label: "Debit Automation Transaction Details"
+}
