@@ -36,23 +36,3 @@ explore: cw_coin_dash_wallet {
 explore: hp_transaction_count {
   label: "Transaction Count - Enterprise Level"
 }
-
-explore: hp_auto_debit {
-  label: "Debit Automation Alert"
-}
-
-explore: hp_auto_debit_transaction_details {
-  label: "Debit Automation Transaction Details"
-}
-
-
-explore: alert_information {
-  view_name: hp_auto_debit
-  join: hp_auto_debit_transaction_details {
-    sql_on: ${hp_auto_debit.transaction_id} = ${hp_auto_debit_transaction_details.transaction_id} ;;
-    relationship: one_to_many
-    type: left_outer #default is left outer join
-  }
-  # sql_always_where: ${hp_auto_debit_transaction_details.transaction_datetime_time} between
-  # dateadd(hour, -5, current_timestamp()) and dateadd(hour, -1, current_timestamp()) ;;
-}
