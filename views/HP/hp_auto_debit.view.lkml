@@ -40,4 +40,22 @@ view: hp_auto_debit {
   measure: count {
     type: count
   }
+
+  measure: custodial_debit_sum {
+    type: sum
+    label: "Custodial Debit"
+    sql: ${custodial_debit} ;;
+  }
+
+  measure: within_bitgo_transfer_sum {
+    type: sum
+    label: "within BitGo Transfer"
+    sql: ${within_bitgo_transfer} ;;
+  }
+
+  measure: outside_bitgo_transfer_sum {
+    type: sum
+    label: "outside BitGo Transfer"
+    sql: ${outside_bitgo_transfer} ;;
+  }
 }
