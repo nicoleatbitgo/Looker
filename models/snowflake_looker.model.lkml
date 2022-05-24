@@ -53,6 +53,6 @@ explore: alert_information {
     relationship: one_to_many
     type: left_outer #default is left outer join
   }
-  sql_always_where: ${hp_auto_debit_transaction_details.transaction_datetime_time} between
-  dateadd(hour, -5, current_timestamp()) and dateadd(hour, -1, current_timestamp()) ;;
+  # sql_always_where: ${hp_auto_debit_transaction_details.transaction_datetime_time} between
+  # dateadd(hour, -5, current_timestamp()) and dateadd(hour, -1, current_timestamp()) ;;
 }
