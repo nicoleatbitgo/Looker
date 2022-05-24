@@ -39,6 +39,5 @@ view: hp_auto_debit {
 
   measure: count {
     type: count
-    drill_fields: []
   }
 }
