@@ -99,6 +99,12 @@ view: hp_auto_debit_transaction_details {
     sql: ${TABLE}."WALLET_TYPE" ;;
   }
 
+  dimension: concatenated_field {
+    type: string
+    primary_key: yes
+    sql:  concat(${transaction_id}, ${wallet_id}, ${enterprise_id}) ;;
+  }
+
   measure: count {
     type: count
   }
