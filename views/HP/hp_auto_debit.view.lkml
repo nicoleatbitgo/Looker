@@ -24,6 +24,7 @@ view: hp_auto_debit {
 
   dimension: transaction_id {
     type: string
+    primary_key: yes
     sql: ${TABLE}."TRANSACTION_ID" ;;
   }
 
