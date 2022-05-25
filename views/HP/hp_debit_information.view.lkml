@@ -12,15 +12,6 @@ view: hp_debit_information {
     sql: ${TABLE}."COIN" ;;
   }
 
-  dimension: custodial_debit {
-    type: number
-    sql: ${TABLE}."CUSTODIAL_DEBIT" ;;
-  }
-
-  dimension: custodial_debit_coins {
-    type: number
-    sql: ${TABLE}."CUSTODIAL_DEBIT_COINS" ;;
-  }
 
   dimension_group: enterprise_datetime {
     type: time
@@ -54,16 +45,6 @@ view: hp_debit_information {
   dimension: kyc_state {
     type: string
     sql: ${TABLE}."KYC_STATE" ;;
-  }
-
-  dimension: outside_bitgo_transfer {
-    type: number
-    sql: ${TABLE}."OUTSIDE_BITGO_TRANSFER" ;;
-  }
-
-  dimension: outside_bitgo_transfer_of_coins {
-    type: number
-    sql: ${TABLE}."OUTSIDE_BITGO_TRANSFER_OF_COINS" ;;
   }
 
   dimension: pricing_plan {
@@ -117,16 +98,6 @@ view: hp_debit_information {
   dimension: wallet_type {
     type: string
     sql: ${TABLE}."WALLET_TYPE" ;;
-  }
-
-  dimension: within_bitgo_transfer {
-    type: number
-    sql: ${TABLE}."WITHIN_BITGO_TRANSFER" ;;
-  }
-
-  dimension: within_bitgo_transfer_of_coins {
-    type: number
-    sql: ${TABLE}."WITHIN_BITGO_TRANSFER_OF_COINS" ;;
   }
 
   measure: count {
