@@ -61,4 +61,22 @@ view: hp_auto_debit {
     sql: ${within_bitgo_transfer} ;;
   }
 
+  measure: custodial_debit_coins_sum {
+    type: sum
+    label: "Custodial Debit (#Coins)"
+    sql: ${custodial_debit_coins} ;;
+  }
+
+  measure: within_bitgo_transfer_of_coins_sum{
+    type: sum
+    label: "within BitGo Transfer (#Coins)"
+    sql: ${within_bitgo_transfer_of_coins} ;;
+  }
+
+  measure: outside_bitgo_transfer_of_coins_sum{
+    type: sum
+    label: "outside BitGo Transfer (#Coins)"
+    sql: ${outside_bitgo_transfer_of_coins} ;;
+  }
+
 }
