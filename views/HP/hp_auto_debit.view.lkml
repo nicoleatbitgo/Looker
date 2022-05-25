@@ -1,6 +1,10 @@
 view: hp_auto_debit {
-  sql_table_name: "LOOKER"."HP_AUTO_DEBIT"
-    ;;
+  sql_table_name: "LOOKER"."HP_AUTO_DEBIT";;
+
+  dimension: transaction_id {
+    type: string
+    sql: ${TABLE}."TRANSACTION_ID" ;;
+  }
 
   dimension: custodial_debit {
     type: number
