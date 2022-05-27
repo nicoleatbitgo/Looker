@@ -1,11 +1,14 @@
 connection: "snowflake_looker"
 
 # include all the views
-include: "/views/**/eth_transfer.view"
+
 include: "/views/**/rg_wp_metrics.view"
 include: "/views/cw_coin_dash_v2.view.lkml"
 include: "/views/cw_coin_dash_base.view.lkml"
 include: "/views/cw_coin_dash_wallet.view.lkml"
+include: "/views/cw_v2_coin_dash_bal.view.lkml"
+include: "/views/cw_v2_coin_dash_inflow.view.lkml"
+include: "/cw_acct_level_bal.view.lkml"
 include: "/views/*/*.view.lkml"
 
 datagroup: snowflake_looker_default_datagroup {
@@ -16,11 +19,23 @@ datagroup: snowflake_looker_default_datagroup {
 persist_with: snowflake_looker_default_datagroup
 
 explore: rg_wp_metrics {}
-explore: eth_transfer {}
+
 #feawfewa
 
+# Explores for V2 coin dash
+explore: cw_v2_coin_dash_bal {
+  label: "Coin Dash Balance"
+}
 
+explore: cw_v2_coin_dash_inflow {
+  label: "Coin Dash Inflow/Outflow"
+}
 
+explore: cw_acct_level_bal {
+  label: "Coin Dash Account"
+}
+
+# Explores for v1 coin dash - will remove later
 explore: cw_coin_dash_v2 {
   label: "Coin Dash Coin Level"
 }
