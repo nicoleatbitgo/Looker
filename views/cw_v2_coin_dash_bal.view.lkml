@@ -142,10 +142,6 @@ view: cw_v2_coin_dash_bal {
     value_format: "#,##0"
   }
 
-  measure: ent_check{
-    type: count_distinct
-    sql: ${account_id} ;;
-  }
 
   measure: coin_balance_min {
     type: min
