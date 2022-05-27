@@ -40,8 +40,6 @@ explore: cw_coin_dash_v2 {
   label: "Coin Dash Coin Level"
 }
 
-
-
 explore: cw_coin_dash_base {
   label: "Coin Dash Enterprise Level"
 }
