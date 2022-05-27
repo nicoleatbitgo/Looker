@@ -46,3 +46,7 @@ explore: hp_auto_debit {
 explore: hp_debit_information {
   label: "Debit Alert Information"
 }
+
+explore: aj_daily_coin {
+  label: "Daily Coin"
+}
