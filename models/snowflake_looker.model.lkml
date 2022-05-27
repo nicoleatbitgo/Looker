@@ -40,6 +40,8 @@ explore: cw_coin_dash_v2 {
   label: "Coin Dash Coin Level"
 }
 
+
+
 explore: cw_coin_dash_base {
   label: "Coin Dash Enterprise Level"
 }
@@ -50,4 +52,16 @@ explore: cw_coin_dash_wallet {
 
 explore: hp_transaction_count {
   label: "Transaction Count - Enterprise Level"
+}
+
+explore: hp_auto_debit {
+  label: "Auto Debit Alert"
+}
+
+explore: hp_debit_information {
+  label: "Debit Alert Information"
+}
+
+explore: aj_daily_coin {
+  label: "Daily Coin"
 }
