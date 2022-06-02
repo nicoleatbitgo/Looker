@@ -48,6 +48,7 @@ view: hp_transaction_count {
   }
 
   measure: transaction_ct {
+    label: "Transaction Count"
     type: sum
     sql: ${transaction_count};;
   }
