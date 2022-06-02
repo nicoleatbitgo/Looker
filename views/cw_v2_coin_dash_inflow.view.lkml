@@ -83,12 +83,14 @@ view: cw_v2_coin_dash_inflow {
   measure: inflow_amt {
     type: sum
     sql: ${inflow} ;;
-    value_format: "#,##0"
+#   value_format: "#,##0"
+    value_format: "[>=1]#,##0;[>0]0.00;#,##0"
   }
 
   measure: outflow_amt {
     type: sum
     sql: ${outflow} ;;
-    value_format: "#,##0"
+#   value_format: "#,##0"
+    value_format: "[>=1]#,##0;[>0]0.00;#,##0"
   }
 }

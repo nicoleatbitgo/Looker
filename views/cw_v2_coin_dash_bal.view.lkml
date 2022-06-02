@@ -107,7 +107,8 @@ view: cw_v2_coin_dash_bal {
   measure: coin_balance_amt {
     type: sum
     sql: ${coin_balance} ;;
-    value_format: "#,##0"
+#    value_format: "#,##0"
+    value_format: "[>=1]#,##0;[>0]0.00;#,##0"
   }
 
   measure: usd_balance_amt {
