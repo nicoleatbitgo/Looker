@@ -162,4 +162,9 @@ view: cw_v2_coin_dash_bal {
     sql: ${coin_balance} ;;
     value_format: "#,##0"
   }
+
+  measure: coin_cnt {
+    type: count_distinct
+    sql: ${coin} ;;
+  }
 }
