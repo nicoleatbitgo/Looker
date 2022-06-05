@@ -79,4 +79,11 @@ view: cw_acct_level_bal {
     type: count
   }
 
+  measure: pos_bal_acct {
+    type: count_distinct
+    sql: CASE
+            WHEN ${coin_balance_amt} > 0 THEN ${account_id}
+            ELSE NULL
+        END ;;
+  }
 }
