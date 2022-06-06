@@ -62,3 +62,7 @@ explore: hp_debit_information {
 explore: aj_daily_coin {
   label: "Daily Coin"
 }
+
+explore: hp_customer_health_score {
+  label: "Customer Health Score"
+}
