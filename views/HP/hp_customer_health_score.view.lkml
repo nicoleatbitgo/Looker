@@ -39,6 +39,7 @@ view: hp_customer_health_score {
 
   dimension: csm {
     type: string
+    label: "CSM"
     sql: ${TABLE}."CSM" ;;
   }
 
