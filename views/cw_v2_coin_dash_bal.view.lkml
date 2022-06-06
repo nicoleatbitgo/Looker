@@ -99,6 +99,23 @@ view: cw_v2_coin_dash_bal {
         END ;;
   }
 
+
+  parameter: top_n_coins {
+    type: string
+    allowed_value: { value: "Top 10 coins" }
+    allowed_value: { value: "Top 25 coins" }
+    allowed_value: { value: "Top 50 coins" }
+  }
+
+  dimension: rank_limit {
+    type: number
+    sql: CASE
+           WHEN {% parameter top_n_coins %} = 'Top 10 coins' THEN 10
+           WHEN {% parameter top_n_coins %} = 'Top 25 coins' THEN 25
+           WHEN {% parameter top_n_coins %} = 'Top 50 coins' THEN 50
+         END;;
+  }
+
   measure: count {
     type: count
     drill_fields: []
