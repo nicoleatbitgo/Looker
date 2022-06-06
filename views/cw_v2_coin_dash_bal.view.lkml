@@ -107,7 +107,8 @@ view: cw_v2_coin_dash_bal {
   measure: coin_balance_amt {
     type: sum
     sql: ${coin_balance} ;;
-    value_format: "#,##0"
+   value_format: "#,##0"
+ #  value_format: "[>=1]#,##0;[>0]0.00;#,##0"
   }
 
   measure: usd_balance_amt {
@@ -124,22 +125,9 @@ view: cw_v2_coin_dash_bal {
 
   }
 
-  measure: pos_bal_acct {
-    type: count_distinct
-    sql: CASE
-            WHEN ${usd_balance} > 0 THEN ${account_id}
-            ELSE NULL
-        END ;;
-    value_format: "#,##0"
-  }
-
   measure: pos_bal_wallet {
     type: sum
-    sql: CASE
-            WHEN ${usd_balance} > 0 THEN ${pos_wallet_flag}
-            ELSE NULL
-        END ;;
-    value_format: "#,##0"
+    sql: ${pos_wallet_flag};;
   }
 
 
@@ -173,5 +161,10 @@ view: cw_v2_coin_dash_bal {
     type: max
     sql: ${coin_balance} ;;
     value_format: "#,##0"
+  }
+
+  measure: coin_cnt {
+    type: count_distinct
+    sql: ${coin} ;;
   }
 }

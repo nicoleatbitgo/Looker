@@ -8,7 +8,6 @@ include: "/views/cw_coin_dash_base.view.lkml"
 include: "/views/cw_coin_dash_wallet.view.lkml"
 include: "/views/cw_v2_coin_dash_bal.view.lkml"
 include: "/views/cw_v2_coin_dash_inflow.view.lkml"
-include: "/cw_acct_level_bal.view.lkml"
 include: "/views/*/*.view.lkml"
 
 datagroup: snowflake_looker_default_datagroup {
