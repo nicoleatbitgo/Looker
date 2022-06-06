@@ -182,11 +182,18 @@ view: hp_customer_health_score {
   }
 
   # Measures
-measure: auc_sum {
-  type: sum
-  label: "AUC"
-  sql: ${auc} ;;
-}
+
+  measure: Enterprise_Count {
+    type: count_distinct
+    label: "Enterprise Count"
+    sql: ${enterprise_id} ;;
+  }
+
+  measure: auc_sum {
+    type: sum
+    label: "AUC"
+    sql: ${auc} ;;
+  }
 
   measure: sent_transaction_count_sum {
     type: sum
