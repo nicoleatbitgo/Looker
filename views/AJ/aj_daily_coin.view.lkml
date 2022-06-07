@@ -52,6 +52,11 @@ view: aj_daily_coin {
     sql: ${TABLE}."YR_DT" ;;
   }
 
+  dimension: enterprise_name {
+    type: string
+    sql: ${TABLE}."ENTERPRISE_NAME" ;;
+  }
+
   measure: count {
     type: count
     drill_fields: []
