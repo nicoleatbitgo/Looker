@@ -142,9 +142,9 @@ view: hp_customer_health_score_with_auc {
     sql: ${TABLE}."PRICING_PLAN" ;;
   }
 
-  dimension: product_usage_socre {
+  dimension: product_usage_score_total {
     type: number
-    sql: ${TABLE}."PRODUCT_USAGE_SOCRE" ;;
+    sql: ${TABLE}."PRODUCT_USAGE_SCORE_TOTAL" ;;
   }
 
   dimension: resolutionhour_jira_score {
