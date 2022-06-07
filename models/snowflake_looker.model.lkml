@@ -66,3 +66,7 @@ explore: aj_daily_coin {
 explore: hp_customer_health_score {
   label: "Customer Health Score"
 }
+
+explore: hp_customer_health_score_with_auc {
+  label: "Customer Health Score with Product Usage"
+}
