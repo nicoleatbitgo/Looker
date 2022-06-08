@@ -57,6 +57,16 @@ view: cw_v2_coin_dash_inflow {
     sql: ${TABLE}."WALLET_TYPE" ;;
   }
 
+  dimension: bitgo_org {
+    type: string
+    sql: ${TABLE}. "BITGO_ORG" ;;
+  }
+
+  dimension: coin_group {
+    type: string
+    sql: ${TABLE}. "COIN_GROUP" ;;
+  }
+
   parameter: date_granularity {
     type: string
     allowed_value: { value: "Day" }

@@ -45,6 +45,16 @@ view: cw_v2_coin_dash_bal {
     sql: ${TABLE}."TYPE_FLAG" ;;
   }
 
+  dimension: bitgo_org {
+    type: string
+    sql: ${TABLE}. "BITGO_ORG" ;;
+  }
+
+  dimension: coin_group {
+    type: string
+    sql: ${TABLE}. "COIN_GROUP" ;;
+  }
+
   dimension: usd_balance {
     type: number
     sql: ${TABLE}."USD_BALANCE" ;;
