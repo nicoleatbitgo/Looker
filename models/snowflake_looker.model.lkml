@@ -58,3 +58,7 @@ explore: hp_customer_health_score_with_auc {
 explore: rg_check {
   label: "RG Test"
 }
+
+explore: trade_dash_monthly {
+  label: "RG trade_dash_monthly"
+}
