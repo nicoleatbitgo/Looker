@@ -3,7 +3,7 @@ view: trade_dash_monthly {
     ;;
 
   measure: client_fund_input {
-    type: number
+    type: sum
     sql: ${TABLE}."CLIENT_FUND_INPUT" ;;
   }
 
@@ -13,22 +13,22 @@ view: trade_dash_monthly {
   }
 
   measure: fill_exchange_fees {
-    type: number
+    type: sum
     sql: ${TABLE}."FILL_EXCHANGE_FEES" ;;
   }
 
   measure: fill_spreads {
-    type: number
+    type: sum
     sql: ${TABLE}."FILL_SPREADS" ;;
   }
 
   measure: fill_talos_fees {
-    type: number
+    type: sum
     sql: ${TABLE}."FILL_TALOS_FEES" ;;
   }
 
   measure: number_coins {
-    type: number
+    type: sum
     sql: ${TABLE}."NUMBER_COINS" ;;
   }
 
@@ -63,7 +63,7 @@ view: trade_dash_monthly {
   }
 
   measure: trade_volume {
-    type: number
+    type: sum
     sql: ${TABLE}."TRADE_VOLUME" ;;
   }
 
