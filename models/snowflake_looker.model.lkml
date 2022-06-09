@@ -3,9 +3,6 @@ connection: "snowflake_looker"
 # include all the views
 
 include: "/views/**/rg_wp_metrics.view"
-include: "/views/cw_coin_dash_v2.view.lkml"
-include: "/views/cw_coin_dash_base.view.lkml"
-include: "/views/cw_coin_dash_wallet.view.lkml"
 include: "/views/cw_v2_coin_dash_bal.view.lkml"
 include: "/views/cw_v2_coin_dash_inflow.view.lkml"
 include: "/views/*/*.view.lkml"
@@ -34,19 +31,6 @@ explore: cw_acct_level_bal {
   label: "Coin Dash Account"
 }
 
-# Explores for v1 coin dash - will remove later
-explore: cw_coin_dash_v2 {
-  label: "Coin Dash Coin Level"
-}
-
-explore: cw_coin_dash_base {
-  label: "Coin Dash Enterprise Level"
-}
-
-explore: cw_coin_dash_wallet {
-  label: "Coin Dash Wallet Level"
-}
-
 explore: hp_transaction_count {
   label: "Transaction Count - Enterprise Level"
 }
@@ -69,4 +53,8 @@ explore: hp_customer_health_score {
 
 explore: hp_customer_health_score_with_auc {
   label: "Customer Health Score with Product Usage"
+}
+
+explore: rg_check {
+  label: "RG Test"
 }
