@@ -133,6 +133,7 @@ view: hp_debit_information {
 
   dimension: csm {
     type: string
+    label: "CSM"
     sql: ${TABLE}."CSM" ;;
   }
 
