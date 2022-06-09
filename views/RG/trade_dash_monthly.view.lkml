@@ -72,17 +72,17 @@ view: trade_dash_monthly {
     sql: ${TABLE}."USER_INTENT" ;;
   }
 
-  measure: year_month_creation {
+  dimension: year_month_creation {
     type: date
     sql: ${TABLE}."YEAR_MONTH_CREATION" ;;
   }
 
-  measure: year_month_post {
+  dimension: year_month_post {
     type: date
     sql: ${TABLE}."YEAR_MONTH_POST" ;;
   }
 
-  measure: year_month_trade {
+  dimension: year_month_trade {
     type: date
     sql: ${TABLE}."YEAR_MONTH_TRADE" ;;
   }
