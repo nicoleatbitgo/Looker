@@ -7,8 +7,8 @@ view: rg_check {
     sql: ${TABLE}."NAME" ;;
   }
 
-  dimension: number {
-    type: string
+  measure: number {
+    type: sum
     sql: ${TABLE}."NUMBER" ;;
   }
 
