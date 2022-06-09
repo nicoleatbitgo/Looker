@@ -1,8 +1,8 @@
 connection: "snowflake_looker"
 
 # include all the views
-include: "/views/**/eth_transfer.view"
 include: "/views/**/rg_wp_metrics.view"
+include: "/views/**/rg_check.view"
 
 datagroup: snowflake_looker_default_datagroup {
   # sql_trigger: SELECT MAX(id) FROM etl_log;;
@@ -12,5 +12,5 @@ datagroup: snowflake_looker_default_datagroup {
 persist_with: snowflake_looker_default_datagroup
 
 explore: rg_wp_metrics {}
-explore: eth_transfer {}
+explore: rg_check {}
 #feawfewa
