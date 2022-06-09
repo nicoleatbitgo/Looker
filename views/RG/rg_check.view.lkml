@@ -9,7 +9,7 @@ view: rg_check {
 
   dimension: level1 {
     type: string
-    sql: ${TABLE}."NAME" ;;
+    sql: ${TABLE}."LEVEL1" ;;
   }
 
   measure: number {
