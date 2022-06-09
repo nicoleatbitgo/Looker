@@ -7,6 +7,11 @@ view: rg_check {
     sql: ${TABLE}."NAME" ;;
   }
 
+  dimension: level1 {
+    type: string
+    sql: ${TABLE}."NAME" ;;
+  }
+
   measure: number {
     type: sum
     sql: ${TABLE}."NUMBER" ;;
