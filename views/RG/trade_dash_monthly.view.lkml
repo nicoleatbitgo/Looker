@@ -72,18 +72,48 @@ view: trade_dash_monthly {
     sql: ${TABLE}."USER_INTENT" ;;
   }
 
-  dimension: year_month_creation {
-    type: date
+  dimension_group: creation {
+    type: time
+    timeframes: [
+      raw,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    convert_tz: no
+    datatype: date
     sql: ${TABLE}."YEAR_MONTH_CREATION" ;;
   }
 
-  dimension: year_month_post {
-    type: date
+  dimension_group: Post {
+    type: time
+    timeframes: [
+      raw,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    convert_tz: no
+    datatype: date
     sql: ${TABLE}."YEAR_MONTH_POST" ;;
   }
 
-  dimension: year_month_trade {
-    type: date
+  dimension_group: trade {
+    type: time
+    timeframes: [
+      raw,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    convert_tz: no
+    datatype: date
     sql: ${TABLE}."YEAR_MONTH_TRADE" ;;
   }
 
