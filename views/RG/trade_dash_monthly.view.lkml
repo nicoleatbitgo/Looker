@@ -88,17 +88,17 @@ view: trade_dash_monthly {
   }
 
   dimension: year_month_creation {
-    type: date
+    type: string
     sql: ${TABLE}."YEAR_MONTH_CREATION" ;;
   }
 
   dimension: year_month_post {
-    type: date
+    type: string
     sql: ${TABLE}."YEAR_MONTH_POST" ;;
   }
 
   dimension: year_month_trade {
-    type: date
+    type: string
     sql: ${TABLE}."YEAR_MONTH_TRADE" ;;
   }
 
