@@ -2,11 +2,6 @@ view: trade_dash_monthly {
   sql_table_name: "LOOKER"."TRADE_DASH_MONTHLY"
     ;;
 
-  measure: client_fund_input {
-    type: sum
-    sql: ${TABLE}."CLIENT_FUND_INPUT" ;;
-  }
-
   dimension: collateral_type {
     type: string
     sql: ${TABLE}."COLLATERAL_TYPE" ;;
@@ -19,27 +14,22 @@ view: trade_dash_monthly {
 
   measure: fill_exchange_fees {
     type: sum
-    sql: ${TABLE}."FILL_EXCHANGE_FEES" ;;
+    sql: ${TABLE}."EXCHANGE_FEES" ;;
   }
 
   measure: fill_spreads {
     type: sum
-    sql: ${TABLE}."FILL_SPREADS" ;;
+    sql: ${TABLE}."SPREAD" ;;
   }
 
   measure: fill_talos_fees {
     type: sum
-    sql: ${TABLE}."FILL_TALOS_FEES" ;;
+    sql: ${TABLE}."TALOS_FEES" ;;
   }
 
   measure: number_coins {
     type: sum
     sql: ${TABLE}."NUMBER_COINS" ;;
-  }
-
-  dimension: organization_id {
-    type: string
-    sql: ${TABLE}."ORGANIZATION_ID" ;;
   }
 
   dimension: processing_status {
@@ -49,7 +39,7 @@ view: trade_dash_monthly {
 
   dimension: settlement_status {
     type: string
-    sql: ${TABLE}."SETTLEMENT_STATUS" ;;
+    sql: ${TABLE}."SETTLEMENT_STATUS1" ;;
   }
 
   dimension: side {
@@ -69,7 +59,12 @@ view: trade_dash_monthly {
 
   measure: trade_volume {
     type: sum
-    sql: ${TABLE}."TRADE_VOLUME" ;;
+    sql: ${TABLE}."QUOTE_QUANTITY" ;;
+  }
+
+  measure: trade_volume_spread {
+    type: sum
+    sql: ${TABLE}."QUOTE_QUANTITY_SPREAD" ;;
   }
 
   measure: no_orders {
@@ -105,7 +100,7 @@ view: trade_dash_monthly {
     timeframes: [date,month,week,year]
     convert_tz: no
     datatype: date
-    sql: ${TABLE}."POST_DATE" ;;
+    sql: ${TABLE}."POST_DATE1" ;;
   }
 
   dimension_group: CREATION_DATE {
@@ -113,7 +108,7 @@ view: trade_dash_monthly {
     timeframes: [date,month,week,year]
     convert_tz: no
     datatype: date
-    sql: ${TABLE}."CREATION_DATE" ;;
+    sql: ${TABLE}."CREATION_DATE1" ;;
   }
 
   dimension_group: COMPLETION_DATE {
@@ -121,7 +116,7 @@ view: trade_dash_monthly {
     timeframes: [date,month,week,year]
     convert_tz: no
     datatype: date
-    sql: ${TABLE}."COMPLETION_DATE" ;;
+    sql: ${TABLE}."COMPLETION_DATE1" ;;
   }
 
   measure: count {
