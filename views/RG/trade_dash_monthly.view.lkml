@@ -82,6 +82,16 @@ view: trade_dash_monthly {
     sql: ${TABLE}."USER_INTENT" ;;
   }
 
+  dimension: ENTERPRISE_NAME {
+    type: string
+    sql: ${TABLE}."ENTERPRISE_NAME" ;;
+  }
+
+  dimension: EXCHANGE_NAME {
+    type: string
+    sql: ${TABLE}."EXCHANGE_NAME" ;;
+  }
+
   dimension_group: trade_date {
     type: time
     timeframes: [date,month,week,year]
