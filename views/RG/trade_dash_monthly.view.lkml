@@ -137,6 +137,7 @@ view: trade_dash_monthly {
     allowed_value: { value: "Day" }
     allowed_value: { value: "Week" }
     allowed_value: { value: "Month" }
+    allowed_value: { value: "Year" }
   }
 
   dimension: date {
@@ -145,8 +146,9 @@ view: trade_dash_monthly {
     sql:
         CASE
           WHEN {% parameter date_granularity %} = 'Day' THEN ${COMPLETION_DATE_date}
-          WHEN {% parameter date_granularity %} = 'Week' and ${is_last_day_of_week} = 'yes' THEN ${COMPLETION_DATE_date}
-          WHEN {% parameter date_granularity %} = 'Month' and ${is_last_day_of_month} = 'yes' THEN ${COMPLETION_DATE_date}
+          WHEN {% parameter date_granularity %} = 'Week' THEN ${COMPLETION_DATE_week}
+          WHEN {% parameter date_granularity %} = 'Month' THEN ${COMPLETION_DATE_month}
+          WHEN {% parameter date_granularity %} = 'Year' THEN ${COMPLETION_DATE_year}
         END ;;
    }
 }
