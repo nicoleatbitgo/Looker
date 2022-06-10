@@ -145,15 +145,10 @@ view: trade_dash_monthly {
     type: string
     label_from_parameter: date_granularity
     sql:
-    {% if date_granularity._parameter_value == 'Day' %} ${COMPLETION_DATE_date}
-
-      {% elsif date_granularity._parameter_value == 'Week' %} ${COMPLETION_DATE_week}
-
-      {% elsif date_granularity._parameter_value == 'Month' %} ${COMPLETION_DATE_month}
-
-      {% elsif date_granularity._parameter_value == 'Year' %} ${COMPLETION_DATE_year}
-
-      {% else %} null {% endif %} ;;
-
+  CASE
+    WHEN {% parameter date_granularity %} = 'Day'   THEN ${COMPLETION_DATE_date}
+    WHEN {% parameter date_granularity %} = 'Week'  THEN last_day(to_date(${COMPLETION_DATE_date}),'week')
+    WHEN {% parameter date_granularity %} = 'Month' THEN last_day(to_date(${COMPLETION_DATE_date}),'month')
+    END ;;
    }
 }
