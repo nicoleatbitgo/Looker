@@ -113,14 +113,40 @@ view: trade_dash_monthly {
 
   dimension_group: COMPLETION_DATE {
     type: time
-    timeframes: [date,month,week,year]
+    timeframes: [raw,date,month,week,year]
     convert_tz: no
     datatype: date
     sql: ${TABLE}."COMPLETION_DATE1" ;;
   }
 
-  measure: count {
-    type: count
-    drill_fields: []
+  dimension: is_last_day_of_month {
+    hidden: yes
+    type: yesno
+    sql: dayofmonth(DATEADD(day,1,${COMPLETION_DATE_date}) ) = 1 ;;
   }
+
+  dimension: is_last_day_of_week {
+    hidden: yes
+    type: yesno
+    sql: dayofweek(DATEADD(day,1,${COMPLETION_DATE_date})) = 1 ;;
+  }
+
+
+  parameter: date_granularity {
+    type: string
+    allowed_value: { value: "Day" }
+    allowed_value: { value: "Week" }
+    allowed_value: { value: "Month" }
+  }
+
+  dimension: date {
+    type: string
+    label_from_parameter: date_granularity
+    sql:
+        CASE
+          WHEN {% parameter date_granularity %} = 'Day' THEN ${COMPLETION_DATE_date}
+          WHEN {% parameter date_granularity %} = 'Week' and ${is_last_day_of_week} = 'yes' THEN ${COMPLETION_DATE_date}
+          WHEN {% parameter date_granularity %} = 'Month' and ${is_last_day_of_month} = 'yes' THEN ${COMPLETION_DATE_date}
+        END ;;
+   }
 }
