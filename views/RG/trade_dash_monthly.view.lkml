@@ -12,21 +12,6 @@ view: trade_dash_monthly {
     sql: ${TABLE}."COLLATERAL_TYPE" ;;
   }
 
-  dimension_group: trade_date {
-    type: time
-    timeframes: [
-      raw,
-      date,
-      week,
-      month,
-      quarter,
-      year
-    ]
-    convert_tz: no
-    datatype: date
-    sql: ${TABLE}."YEAR_MONTH_TRADE" ;;
-  }
-
   measure: fill_exchange_fees {
     type: sum
     sql: ${TABLE}."FILL_EXCHANGE_FEES" ;;
@@ -87,19 +72,28 @@ view: trade_dash_monthly {
     sql: ${TABLE}."USER_INTENT" ;;
   }
 
-  dimension: year_month_creation {
-    type: string
-    sql: ${TABLE}."YEAR_MONTH_CREATION" ;;
+  dimension_group: trade_date {
+    type: time
+    timeframes: [date,month,week,year]
+    convert_tz: no
+    datatype: date
+    sql: ${TABLE}."TRADE_DATE" ;;
   }
 
-  dimension: year_month_post {
-    type: string
-    sql: ${TABLE}."YEAR_MONTH_POST" ;;
+  dimension_group: post_date {
+    type: time
+    timeframes: [date,month,week,year]
+    convert_tz: no
+    datatype: date
+    sql: ${TABLE}."POST_DATE" ;;
   }
 
-  dimension: year_month_trade {
-    type: string
-    sql: ${TABLE}."YEAR_MONTH_TRADE" ;;
+  dimension_group: CREATION_DATE {
+    type: time
+    timeframes: [date,month,week,year]
+    convert_tz: no
+    datatype: date
+    sql: ${TABLE}."CREATION_DATE" ;;
   }
 
   measure: count {
