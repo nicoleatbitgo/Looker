@@ -96,6 +96,14 @@ view: trade_dash_monthly {
     sql: ${TABLE}."CREATION_DATE" ;;
   }
 
+  dimension_group: COMPLETION_DATE {
+    type: time
+    timeframes: [date,month,week,year]
+    convert_tz: no
+    datatype: date
+    sql: ${TABLE}."COMPLETION_DATE" ;;
+  }
+
   measure: count {
     type: count
     drill_fields: []
