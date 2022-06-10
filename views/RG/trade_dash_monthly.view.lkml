@@ -72,6 +72,11 @@ view: trade_dash_monthly {
     sql: ${TABLE}."TRADE_VOLUME" ;;
   }
 
+  measure: no_orders {
+    type: sum
+    sql: ${TABLE}."NO_ORDERS" ;;
+  }
+
   dimension: user_intent {
     type: string
     sql: ${TABLE}."USER_INTENT" ;;
