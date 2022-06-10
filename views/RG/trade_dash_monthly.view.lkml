@@ -12,6 +12,11 @@ view: trade_dash_monthly {
     sql: ${TABLE}."COLLATERAL_TYPE" ;;
   }
 
+  dimension: status {
+    type: string
+    sql: ${TABLE}."STATUS" ;;
+  }
+
   measure: fill_exchange_fees {
     type: sum
     sql: ${TABLE}."FILL_EXCHANGE_FEES" ;;
