@@ -149,6 +149,7 @@ view: trade_dash_monthly {
     WHEN {% parameter date_granularity %} = 'Day'   THEN ${COMPLETION_DATE_date}
     WHEN {% parameter date_granularity %} = 'Week'  THEN last_day(to_date(${COMPLETION_DATE_date}),'week')
     WHEN {% parameter date_granularity %} = 'Month' THEN last_day(to_date(${COMPLETION_DATE_date}),'month')
+    WHEN {% parameter date_granularity %} = 'Year' THEN last_day(to_date(${COMPLETION_DATE_date}),'year')
     END ;;
    }
 }
