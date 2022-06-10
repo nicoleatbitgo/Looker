@@ -12,6 +12,21 @@ view: trade_dash_monthly {
     sql: ${TABLE}."COLLATERAL_TYPE" ;;
   }
 
+  dimension_group: trade_date {
+    type: time
+    timeframes: [
+      raw,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    convert_tz: no
+    datatype: date
+    sql: ${TABLE}."YEAR_MONTH_TRADE" ;;
+  }
+
   measure: fill_exchange_fees {
     type: sum
     sql: ${TABLE}."FILL_EXCHANGE_FEES" ;;
