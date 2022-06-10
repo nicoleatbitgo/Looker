@@ -141,7 +141,7 @@ view: trade_dash_monthly {
   }
 
   dimension: date {
-    type: string
+    type: date_raw
     label_from_parameter: date_granularity
     sql:
         CASE
