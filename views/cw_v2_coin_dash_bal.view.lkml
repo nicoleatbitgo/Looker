@@ -99,6 +99,7 @@ view: cw_v2_coin_dash_bal {
   }
 
   dimension: date {
+    description: "Balance date based on selected date granularity"
     type: string
     label_from_parameter: date_granularity
     sql:
@@ -124,6 +125,24 @@ view: cw_v2_coin_dash_bal {
            WHEN {% parameter top_n_coins %} = 'Top 25 coins' THEN 25
            WHEN {% parameter top_n_coins %} = 'Top 50 coins' THEN 50
          END;;
+  }
+
+  parameter: metrics {
+    type: string
+    allowed_value: { value: "Coin volume" }
+    allowed_value: { value: "Coin USD value" }
+  }
+
+  measure: metrics_value {
+    type: number
+    description: "Value based on selected metric"
+   label_from_parameter: metrics
+    sql:
+      CASE
+        WHEN {% parameter metrics %} = 'Coin volume' THEN ${coin_balance_amt}
+        WHEN {% parameter metrics %} = 'Coin USD value'  THEN ${usd_balance_amt}
+      END ;;
+    value_format: "#,##0"
   }
 
   measure: count {
