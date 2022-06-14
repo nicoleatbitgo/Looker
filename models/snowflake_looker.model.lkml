@@ -54,3 +54,11 @@ explore: hp_customer_health_score {
 explore: hp_customer_health_score_with_auc {
   label: "Customer Health Score with Product Usage"
 }
+
+explore: rg_check {
+  label: "RG Test"
+}
+
+explore: trade_dash_monthly {
+  label: "RG trade_dash_monthly"
+}

@@ -131,6 +131,17 @@ view: hp_debit_information {
     sql: ${TABLE}."WALLET_TYPE" ;;
   }
 
+  dimension: csm {
+    type: string
+    label: "CSM"
+    sql: ${TABLE}."CSM" ;;
+  }
+
+  dimension: account_owner {
+    type: string
+    sql: ${TABLE}."ACCOUNT_OWNER" ;;
+  }
+
   measure: count {
     type: count
   }
