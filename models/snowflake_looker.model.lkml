@@ -43,10 +43,6 @@ explore: hp_debit_information {
   label: "Debit Alert Information"
 }
 
-explore: hp_historical_alerts {
-  label: "Historical Debit Alerts"
-}
-
 explore: aj_daily_coin {
   label: "Daily Coin"
 }
