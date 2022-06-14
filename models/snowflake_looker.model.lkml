@@ -62,3 +62,7 @@ explore: rg_check {
 explore: trade_dash_monthly {
   label: "RG trade_dash_monthly"
 }
+
+explore: test_historical_debits {
+  label: "Test Historical Alerts"
+}

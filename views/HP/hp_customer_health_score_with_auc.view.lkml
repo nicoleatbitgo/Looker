@@ -9,12 +9,13 @@ view: hp_customer_health_score_with_auc {
 
   dimension: auc {
     type: number
-    label: "AUC"
+    label: "Wallet Balance"
     sql: ${TABLE}."AUC" ;;
   }
 
   dimension: auc_score {
     type: number
+    label: "Wallet Balance Score"
     sql: ${TABLE}."AUC_SCORE" ;;
   }
 

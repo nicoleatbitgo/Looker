@@ -142,6 +142,11 @@ view: hp_debit_information {
     sql: ${TABLE}."ACCOUNT_OWNER" ;;
   }
 
+  dimension: csm_number {
+    type: number
+    sql: ${TABLE}."CSM_NUMBER" ;;
+  }
+
   measure: count {
     type: count
   }
@@ -182,5 +187,11 @@ view: hp_debit_information {
     type: sum
     label: "outside BitGo Transfer (#Coins)"
     sql: ${outside_bitgo_transfer_of_coins} ;;
+  }
+
+  measure: csm_number_sum{
+    type: sum
+    label: "CSM Number"
+    sql: ${csm_number} ;;
   }
 }
