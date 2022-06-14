@@ -122,12 +122,12 @@ view: test_historical_debits {
   }
 
   measure: csm_rank {
-    type: number
-    sql: ${TABLE}."CSM_NUMBER" ;;
+    type: sum
+    sql:  ${csm_number};;
   }
 
   measure: custodial_debit_sum {
-    type: number
+    type: sum
     sql: ${custodial_debit};;
   }
 }
