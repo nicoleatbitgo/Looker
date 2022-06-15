@@ -128,21 +128,27 @@ view: cw_v2_coin_dash_bal {
   }
 
   parameter: metrics {
-    type: string
-    allowed_value: { value: "Coin volume" }
-    allowed_value: { value: "Coin USD value" }
+    type: unquoted
+    allowed_value: { value: "Coinvolume" }
+    allowed_value: { value: "CoinUSDvalue" }
   }
 
   measure: metrics_value {
     type: number
     description: "Value based on selected metric"
    label_from_parameter: metrics
-    sql:
-      CASE
-        WHEN {% parameter metrics %} = 'Coin volume' THEN ${coin_balance_amt}
-        WHEN {% parameter metrics %} = 'Coin USD value'  THEN ${usd_balance_amt}
-      END ;;
-    value_format: "#,##0"
+    sql: ${usd_balance_amt};;
+
+
+    html:  {% if metrics._parameter_value == 'Coinvolume' %}
+    {{rendered_value}}
+    {% elsif metrics._parameter_value == 'CoinUSDvalue' %}
+    ${{rendered_value}}
+    {% else %}
+    {{rendered_value}}
+    {% endif %};;
+    value_format: "0.00"
+#    value_format: "#,##0"
   }
 
   measure: count {
