@@ -63,6 +63,6 @@ explore: trade_dash_monthly {
   label: "RG trade_dash_monthly"
 }
 
-explore: test_historical_debits {
-  label: "Test Historical Alerts"
+explore: hp_heat_map_sent_transfers {
+  label: "Heat Map for Sent Transfers"
 }
