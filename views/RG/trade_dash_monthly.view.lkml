@@ -119,16 +119,32 @@ view: trade_dash_monthly {
     sql: ${TABLE}."COMPLETION_DATE1" ;;
   }
 
+  dimension_group: EXCHANGE_DATE_EST_EDT {
+    type: time
+    timeframes: [raw,date,month,week,year]
+    convert_tz: no
+    datatype: date
+    sql: ${TABLE}."EXCHANGE_DATE_EST_EDT" ;;
+  }
+
+  dimension_group: EXCHANGE_DATE_ADJ_FINAL {
+    type: time
+    timeframes: [raw,date,month,week,year]
+    convert_tz: no
+    datatype: date
+    sql: ${TABLE}."EXCHANGE_DATE_ADJ_FINAL" ;;
+  }
+
   dimension: is_last_day_of_month {
     hidden: yes
     type: yesno
-    sql: dayofmonth(DATEADD(day,1,${COMPLETION_DATE_date}) ) = 1 ;;
+    sql: dayofmonth(DATEADD(day,1,${EXCHANGE_DATE_ADJ_FINAL_date}) ) = 1 ;;
   }
 
   dimension: is_last_day_of_week {
     hidden: yes
     type: yesno
-    sql: dayofweek(DATEADD(day,1,${COMPLETION_DATE_date})) = 1 ;;
+    sql: dayofweek(DATEADD(day,1,${EXCHANGE_DATE_ADJ_FINAL_date})) = 1 ;;
   }
 
 
@@ -146,10 +162,10 @@ view: trade_dash_monthly {
     label_from_parameter: date_granularity
     sql:
   CASE
-    WHEN {% parameter date_granularity %} = 'Day'   THEN ${COMPLETION_DATE_date}
-    WHEN {% parameter date_granularity %} = 'Week'  THEN last_day(to_date(${COMPLETION_DATE_date}),'week')
-    WHEN {% parameter date_granularity %} = 'Month' THEN last_day(to_date(${COMPLETION_DATE_date}),'month')
-    WHEN {% parameter date_granularity %} = 'Year' THEN last_day(to_date(${COMPLETION_DATE_date}),'year')
+    WHEN {% parameter date_granularity %} = 'Day'   THEN ${EXCHANGE_DATE_ADJ_FINAL_date}
+    WHEN {% parameter date_granularity %} = 'Week'  THEN last_day(to_date(${EXCHANGE_DATE_ADJ_FINAL_date}),'week')
+    WHEN {% parameter date_granularity %} = 'Month' THEN last_day(to_date(${EXCHANGE_DATE_ADJ_FINAL_date}),'month')
+    WHEN {% parameter date_granularity %} = 'Year' THEN last_day(to_date(${EXCHANGE_DATE_ADJ_FINAL_date}),'year')
     END ;;
    }
 }
