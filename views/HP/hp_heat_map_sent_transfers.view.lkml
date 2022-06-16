@@ -37,6 +37,25 @@ view: hp_heat_map_sent_transfers {
     sql: ${TABLE}."WALLET_TYPE" ;;
   }
 
+  parameter: date_granularity {
+    type: string
+    allowed_value: { value: "Day" }
+    allowed_value: { value: "Week" }
+    allowed_value: { value: "Month" }
+  }
+
+  dimension: date {
+    type: string
+    label_from_parameter: date_granularity
+    sql:
+    CASE
+    WHEN {% parameter date_granularity %} = 'Day'   THEN ${transaction_date}
+    WHEN {% parameter date_granularity %} = 'Week'  THEN last_day(to_date(${transaction_date}),'week')
+    WHEN {% parameter date_granularity %} = 'Month' THEN last_day(to_date(${transaction_date}),'month')
+    END ;;
+  }
+
+
   measure: count {
     type: count
   }
