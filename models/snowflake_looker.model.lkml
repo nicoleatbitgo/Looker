@@ -66,3 +66,7 @@ explore: trade_dash_monthly {
 explore: hp_heat_map_sent_transfers {
   label: "Heat Map for Sent Transfers"
 }
+
+explore: hp_heat_map_wallet_balance {
+  label: "Heat Map for Wallet Balance"
+}
