@@ -18,6 +18,31 @@ explore: rg_wp_metrics {}
 
 #feawfewa
 
+#Testing explore for the new structure
+explore: ng_daily_wallet_balance {
+
+  label: "Daily Wallet Balance"
+
+  join: cw_coin_units_adj {
+    type: left_outer
+    sql_on: ${ng_daily_wallet_balance.coin} = ${cw_coin_units_adj.coin} ;;
+    relationship: many_to_one
+  }
+
+  join: hp_enterprise_cleanup {
+    type: left_outer
+    sql_on: ${ng_daily_wallet_balance.enterprise_id} = ${hp_enterprise_cleanup.enterprise_id}  ;;
+    relationship: many_to_one
+  }
+
+  join: hp_wallet_cleanup {
+    type: left_outer
+    sql_on: ${ng_daily_wallet_balance.wallet_id} =  ${hp_wallet_cleanup.wallet_id} ;;
+    relationship: many_to_one
+  }
+
+}
+
 # Explores for V2 coin dash
 explore: cw_v2_coin_dash_bal {
   label: "Coin Dash Balance"
