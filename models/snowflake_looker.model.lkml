@@ -63,13 +63,13 @@ explore: trade_dash_monthly {
   label: "RG trade_dash_monthly"
 }
 
-explore: hp_heat_map_sent_transfers {
-  label: "Heat Map for Sent Transfers"
-}
+# explore: hp_heat_map_sent_transfers {
+#   label: "Heat Map for Sent Transfers"
+# }
 
-explore: hp_heat_map_wallet_balance {
-  label: "Heat Map for Wallet Balance"
-}
+# explore: hp_heat_map_wallet_balance {
+#   label: "Heat Map for Wallet Balance"
+# }
 
 explore: hp_product_usage_trends {
   label: "Product Usage Trends"
