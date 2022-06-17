@@ -2,6 +2,16 @@ view: hp_heat_map_wallet_balance {
   sql_table_name: "LOOKER"."HP_HEAT_MAP_WALLET_BALANCE"
     ;;
 
+  dimension: account_owner {
+    type: string
+    sql: ${TABLE}."ACCOUNT_OWNER" ;;
+  }
+
+  dimension: account_tier {
+    type: string
+    sql: ${TABLE}."ACCOUNT_TIER" ;;
+  }
+
   dimension_group: balance {
     type: time
     timeframes: [
@@ -17,6 +27,21 @@ view: hp_heat_map_wallet_balance {
     sql: ${TABLE}."BALANCE_DATE" ;;
   }
 
+  dimension: bitgo_org {
+    type: string
+    sql: ${TABLE}."BITGO_ORG" ;;
+  }
+
+  dimension: coin {
+    type: string
+    sql: ${TABLE}."COIN" ;;
+  }
+
+  dimension: csm {
+    type: string
+    sql: ${TABLE}."CSM" ;;
+  }
+
   dimension: enterprise_id {
     type: string
     sql: ${TABLE}."ENTERPRISE_ID" ;;
@@ -27,9 +52,34 @@ view: hp_heat_map_wallet_balance {
     sql: ${TABLE}."FLAG" ;;
   }
 
+  dimension: kyc_state {
+    type: string
+    sql: ${TABLE}."KYC_STATE" ;;
+  }
+
+  dimension: licenses {
+    type: string
+    sql: ${TABLE}."LICENSES" ;;
+  }
+
+  dimension: pricing_plan {
+    type: string
+    sql: ${TABLE}."PRICING_PLAN" ;;
+  }
+
+  dimension: upfront_payment_status {
+    type: string
+    sql: ${TABLE}."UPFRONT_PAYMENT_STATUS" ;;
+  }
+
   dimension: wallet_balance {
     type: number
     sql: ${TABLE}."WALLET_BALANCE" ;;
+  }
+
+  dimension: wallet_id {
+    type: string
+    sql: ${TABLE}."WALLET_ID" ;;
   }
 
   dimension: wallet_type {
@@ -43,7 +93,6 @@ view: hp_heat_map_wallet_balance {
     allowed_value: { value: "Week" }
     allowed_value: { value: "Month" }
   }
-
 
   dimension: date {
     type: string
@@ -60,9 +109,11 @@ view: hp_heat_map_wallet_balance {
     type: count
   }
 
-  measure: wallet_balane_sum {
+  measure: wallet_balance_sum {
     type: sum
     label: "Wallet Balance"
     sql: ${wallet_balance} ;;
   }
+
+
 }
