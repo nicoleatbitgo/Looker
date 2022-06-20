@@ -48,6 +48,11 @@ view: hp_heat_map_wallet_balance {
     sql: ${TABLE}."ENTERPRISE_ID" ;;
   }
 
+  dimension: enterprise_name {
+    type: string
+    sql: ${TABLE}."ENTERPRISE_NAME" ;;
+  }
+
   dimension: flag {
     type: string
     sql: ${TABLE}."FLAG" ;;
