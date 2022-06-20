@@ -251,7 +251,8 @@ view: hp_product_usage_trends {
     sql: ${TABLE}."ENTERPRISE_ID" ;;
     link: {
       label: "Explore Enterprise Details"
-      url: "https://bitgoinc.cloud.looker.com/dashboards/32?Enterprise+ID={{ value }}"
+      # url: "https://bitgoinc.cloud.looker.com/dashboards/32?Enterprise+ID={{ value }}"
+      url: "https://bitgoinc.cloud.looker.com/dashboards/32?Enterprise+ID={{ _filters['hp_product_usage_trends.enterprise_id'] | url_encode }}"
     }
   }
 
