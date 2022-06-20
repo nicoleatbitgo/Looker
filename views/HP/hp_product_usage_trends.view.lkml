@@ -118,7 +118,7 @@ view: hp_product_usage_trends {
     sql: ${TABLE}."FIRST_WALLET_ID" ;;
   }
 
-  dimension: CHEETAH_ID {
+  dimension: cheetah_id {
     type: string
     sql: ${TABLE}."CHEETAH_ID" ;;
   }
