@@ -64,6 +64,7 @@ view: hp_product_usage_trends {
 
   dimension: csm {
     type: string
+    label: "CSM"
     sql: ${TABLE}."CSM" ;;
   }
 
