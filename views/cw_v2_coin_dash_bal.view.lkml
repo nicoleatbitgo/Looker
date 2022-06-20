@@ -24,6 +24,26 @@ view: cw_v2_coin_dash_bal {
     sql: ${TABLE}."POS_WALLET_FLAG" ;;
   }
 
+  dimension: enterprise_name {
+    type: string
+    sql: ${TABLE}."ENTERPRISE_NAME" ;;
+  }
+
+  dimension: salesforce_id {
+    type: string
+    sql: ${TABLE}."SALESFORCE_ID" ;;
+  }
+
+  dimension: org_salesforce_id {
+    type: string
+    sql: ${TABLE}."ORG_SALESFORCE_ID" ;;
+  }
+
+  dimension: wallet_coin {
+    type: string
+    sql: ${TABLE}."WALLET_COIN" ;;
+  }
+
   dimension_group: transaction {
     type: time
     timeframes: [
