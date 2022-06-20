@@ -178,6 +178,15 @@ view: hp_enterprise_cleanup {
     sql: ${TABLE}."UPFRONT_PAYMENT_STATUS" ;;
   }
 
+  dimension: enterprise {
+    type: string
+    sql: ${TABLE}."ENTERPRISE_ID" ;;
+    link: {
+      label: "Explore Enterprise Details"
+      url: "https://bitgoinc.cloud.looker.com/dashboards/31?Enterprise+ID={{ value }}"
+    }
+  }
+
   measure: count {
     type: count
     drill_fields: [enterprise_name]
