@@ -24,6 +24,7 @@ view: hp_heat_map_sent_transfers {
 
   dimension: csm {
     type: string
+    label: "CSM"
     sql: ${TABLE}."CSM" ;;
   }
 
