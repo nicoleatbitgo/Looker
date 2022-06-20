@@ -39,6 +39,7 @@ view: hp_heat_map_wallet_balance {
 
   dimension: csm {
     type: string
+    label: "CSM"
     sql: ${TABLE}."CSM" ;;
   }
 
