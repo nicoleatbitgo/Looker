@@ -78,6 +78,11 @@ view: hp_product_usage_trends {
     sql: ${TABLE}."ENTERPRISE_ID" ;;
   }
 
+  dimension: enterprise_name {
+    type: string
+    sql: ${TABLE}."ENTERPRISE_NAME" ;;
+  }
+
   dimension: kyc_state {
     type: string
     sql: ${TABLE}."KYC_STATE" ;;
