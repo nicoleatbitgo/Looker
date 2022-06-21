@@ -81,10 +81,6 @@ explore: hp_product_usage_trends {
   label: "Product Usage Trends"
 }
 
-explore: hp_enterprise_cleanup {
-  label: "Enterprise Cleanup Table"
-}
-
 explore: status_time {
   label: "Blockchain status time"
 }
