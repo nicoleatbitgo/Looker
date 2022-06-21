@@ -83,6 +83,11 @@ view: hp_heat_map_wallet_balance {
     sql: ${TABLE}."WALLET_BALANCE" ;;
   }
 
+  dimension: coin_balance {
+    type: number
+    sql: ${TABLE}."COIN_BALANCE" ;;
+  }
+
   dimension: wallet_id {
     type: string
     sql: ${TABLE}."WALLET_ID" ;;
@@ -118,6 +123,12 @@ view: hp_heat_map_wallet_balance {
   measure: wallet_balance_sum {
     type: sum
     label: "Wallet Balance"
+    sql: ${wallet_balance} ;;
+  }
+
+  measure: coin_balance_sum {
+    type: sum
+    label: "Coin Balance"
     sql: ${wallet_balance} ;;
   }
 
