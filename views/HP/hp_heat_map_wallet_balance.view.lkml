@@ -99,6 +99,18 @@ view: hp_heat_map_wallet_balance {
     sql: ${TABLE}."WALLET_TYPE" ;;
   }
 
+  dimension: is_last_day_of_month {
+    hidden: yes
+    type: yesno
+    sql: dayofmonth(DATEADD(day,1,${balance_date}) ) = 1 ;;
+  }
+
+  dimension: is_last_day_of_week {
+    hidden: yes
+    type: yesno
+    sql: dayofweek(DATEADD(day,1,${balance_date})) = 1 ;;
+  }
+
   parameter: date_granularity {
     type: string
     allowed_value: { value: "Day" }
@@ -108,6 +120,7 @@ view: hp_heat_map_wallet_balance {
 
   dimension: date {
     type: string
+    description: "Balance date based on selected date granularity"
     label_from_parameter: date_granularity
     sql:
     CASE
