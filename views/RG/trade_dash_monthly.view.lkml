@@ -4,7 +4,8 @@ view: trade_dash_monthly {
 
   dimension: collateral_type {
     type: string
-    sql: ${TABLE}."COLLATERAL_TYPE" ;;
+    required_access_grants: [can_view]
+    sql: ${TABLE}."COLLATERAL_TYPE";;
   }
 
   dimension: status {
