@@ -64,6 +64,7 @@ view: hp_product_usage_trends {
 
   dimension: csm {
     type: string
+    label: "CSM"
     sql: ${TABLE}."CSM" ;;
   }
 
@@ -75,6 +76,11 @@ view: hp_product_usage_trends {
   dimension: enterprise_id {
     type: string
     sql: ${TABLE}."ENTERPRISE_ID" ;;
+  }
+
+  dimension: enterprise_name {
+    type: string
+    sql: ${TABLE}."ENTERPRISE_NAME" ;;
   }
 
   dimension: kyc_state {
@@ -95,6 +101,26 @@ view: hp_product_usage_trends {
   dimension: pricing_plan {
     type: string
     sql: ${TABLE}."PRICING_PLAN" ;;
+  }
+
+  dimension: salesforce_id {
+    type: string
+    sql: ${TABLE}."SALESFORCE_ID" ;;
+  }
+
+  dimension: organization_id {
+    type: string
+    sql: ${TABLE}."ORGANIZATION_ID" ;;
+  }
+
+  dimension: first_wallet_id {
+    type: string
+    sql: ${TABLE}."FIRST_WALLET_ID" ;;
+  }
+
+  dimension: cheetah_id {
+    type: string
+    sql: ${TABLE}."CHEETAH_ID" ;;
   }
 
   dimension: received_coins {
@@ -142,6 +168,51 @@ view: hp_product_usage_trends {
     sql: ${TABLE}."TRANSACTION_DATE" ;;
   }
 
+  dimension_group: enterprise_creation {
+    type: time
+    timeframes: [
+      raw,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    convert_tz: no
+    datatype: date
+    sql: ${TABLE}."ENTERPRISE_DATETIME" ;;
+  }
+
+  dimension_group: first_transaction {
+    type: time
+    timeframes: [
+      raw,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    convert_tz: no
+    datatype: date
+    sql: ${TABLE}."FIRST_TRANSACTION_DATETIME" ;;
+  }
+
+  dimension_group: first_wallet_creation {
+    type: time
+    timeframes: [
+      raw,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    convert_tz: no
+    datatype: date
+    sql: ${TABLE}."FIRST_WALLET_CREATION_DATETIME" ;;
+  }
+
   dimension: upfront_payment_status {
     type: string
     sql: ${TABLE}."UPFRONT_PAYMENT_STATUS" ;;
@@ -173,6 +244,16 @@ view: hp_product_usage_trends {
     WHEN {% parameter date_granularity %} = 'Week'  THEN last_day(to_date(${transaction_date}),'week')
     WHEN {% parameter date_granularity %} = 'Month' THEN last_day(to_date(${transaction_date}),'month')
     END ;;
+  }
+
+  dimension: enterprise {
+    type: string
+    sql: ${TABLE}."ENTERPRISE_ID" ;;
+    link: {
+      label: "Explore Enterprise Details"
+      # url: "https://bitgoinc.cloud.looker.com/dashboards/32?Enterprise+ID={{ value }}"
+      url: "https://bitgoinc.cloud.looker.com/dashboards/32?Enterprise+ID={{ _filters['hp_product_usage_trends.enterprise_id'] | url_encode }}"
+    }
   }
 
   measure: count {

@@ -39,12 +39,18 @@ view: hp_heat_map_wallet_balance {
 
   dimension: csm {
     type: string
+    label: "CSM"
     sql: ${TABLE}."CSM" ;;
   }
 
   dimension: enterprise_id {
     type: string
     sql: ${TABLE}."ENTERPRISE_ID" ;;
+  }
+
+  dimension: enterprise_name {
+    type: string
+    sql: ${TABLE}."ENTERPRISE_NAME" ;;
   }
 
   dimension: flag {

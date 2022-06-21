@@ -79,3 +79,7 @@ explore: hp_heat_map_wallet_balance {
 explore: hp_product_usage_trends {
   label: "Product Usage Trends"
 }
+
+explore: hp_enterprise_cleanup {
+  label: "Enterprise Cleanup Table"
+}
