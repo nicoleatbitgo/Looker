@@ -1,4 +1,5 @@
 view: hp_transaction_count {
+  required_access_grants: [can_view]
   sql_table_name: "LOOKER"."HP_TRANSACTION_COUNT";;
   label: "Table"
 
@@ -48,6 +49,7 @@ view: hp_transaction_count {
   }
 
   measure: transaction_ct {
+    label: "Transaction Count"
     type: sum
     sql: ${transaction_count};;
   }
