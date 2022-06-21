@@ -1,4 +1,5 @@
 view: status_time {
+  required_access_grants: [can_view]
   sql_table_name: "LOOKER"."STATUS_TIME"
     ;;
 
@@ -73,7 +74,16 @@ view: status_time {
   }
 
   measure: count {
-    type: count
-    drill_fields: []
+    type: sum
+    sql: ${cnt} ;;
   }
+
+  measure: created_confirmed_sum {
+    type: sum
+    sql: ${created_confirmed_s} ;;
+  }
+
+
+
+
 }
