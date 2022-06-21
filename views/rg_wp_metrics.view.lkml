@@ -1,5 +1,5 @@
 view: rg_wp_metrics {
-  required_access_grants: [can_view]
+
     sql_table_name: "LOOKER"."RG_WP_METRICS";;
 
     dimension_group: current_week {

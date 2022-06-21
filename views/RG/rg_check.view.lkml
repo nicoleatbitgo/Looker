@@ -1,5 +1,5 @@
 view: rg_check {
-  required_access_grants: [can_view]
+
   sql_table_name: "LOOKER"."RG_CHECK"
     ;;
 

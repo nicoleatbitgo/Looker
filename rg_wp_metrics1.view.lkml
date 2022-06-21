@@ -1,5 +1,5 @@
 view: rg_wp_metrics {
-  required_access_grants: [can_view]
+
   derived_table: {
     sql: select * from RG_WP_METRICS
       ;;

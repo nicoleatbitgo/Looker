@@ -13,11 +13,6 @@ datagroup: snowflake_looker_default_datagroup {
   max_cache_age: "1 hour"
 }
 
-access_grant: can_view {
-  user_attribute: dsa
-  allowed_values: ["1"]
-}
-
 persist_with: snowflake_looker_default_datagroup
 
 explore: rg_wp_metrics {}
