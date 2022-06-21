@@ -1,4 +1,5 @@
 view: hp_heat_map_sent_transfers {
+  required_access_grants: [can_view]
   sql_table_name: "LOOKER"."HP_HEAT_MAP_SENT_TRANSFERS"
     ;;
 
