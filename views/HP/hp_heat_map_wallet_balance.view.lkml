@@ -124,10 +124,10 @@ view: hp_heat_map_wallet_balance {
     label_from_parameter: date_granularity
     sql:
     CASE
-    WHEN {% parameter date_granularity %} = 'Day'   THEN ${balance_date}
-    WHEN {% parameter date_granularity %} = 'Week'  THEN last_day(to_date(${balance_date}),'week')
-    WHEN {% parameter date_granularity %} = 'Month' THEN last_day(to_date(${balance_date}),'month')
-    END ;;
+          WHEN {% parameter date_granularity %} = 'Day' THEN ${balance_date}
+          WHEN {% parameter date_granularity %} = 'Week' and ${is_last_day_of_week} = 'yes' THEN ${balance_date}
+          WHEN {% parameter date_granularity %} = 'Month' and ${is_last_day_of_month} = 'yes' THEN ${balance_date}
+        END ;;
   }
 
   measure: count {
