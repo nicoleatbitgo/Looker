@@ -84,6 +84,11 @@ view: hp_heat_map_wallet_balance {
     sql: ${TABLE}."WALLET_BALANCE" ;;
   }
 
+  dimension: coin_balance {
+    type: number
+    sql: ${TABLE}."COIN_BALANCE" ;;
+  }
+
   dimension: wallet_id {
     type: string
     sql: ${TABLE}."WALLET_ID" ;;
@@ -92,6 +97,18 @@ view: hp_heat_map_wallet_balance {
   dimension: wallet_type {
     type: string
     sql: ${TABLE}."WALLET_TYPE" ;;
+  }
+
+  dimension: is_last_day_of_month {
+    hidden: yes
+    type: yesno
+    sql: dayofmonth(DATEADD(day,1,${balance_date}) ) = 1 ;;
+  }
+
+  dimension: is_last_day_of_week {
+    hidden: yes
+    type: yesno
+    sql: dayofweek(DATEADD(day,1,${balance_date})) = 1 ;;
   }
 
   parameter: date_granularity {
@@ -103,13 +120,14 @@ view: hp_heat_map_wallet_balance {
 
   dimension: date {
     type: string
+    description: "Balance date based on selected date granularity"
     label_from_parameter: date_granularity
     sql:
     CASE
-    WHEN {% parameter date_granularity %} = 'Day'   THEN ${balance_date}
-    WHEN {% parameter date_granularity %} = 'Week'  THEN last_day(to_date(${balance_date}),'week')
-    WHEN {% parameter date_granularity %} = 'Month' THEN last_day(to_date(${balance_date}),'month')
-    END ;;
+          WHEN {% parameter date_granularity %} = 'Day' THEN ${balance_date}
+          WHEN {% parameter date_granularity %} = 'Week' and ${is_last_day_of_week} = 'yes' THEN ${balance_date}
+          WHEN {% parameter date_granularity %} = 'Month' and ${is_last_day_of_month} = 'yes' THEN ${balance_date}
+        END ;;
   }
 
   measure: count {
@@ -120,6 +138,12 @@ view: hp_heat_map_wallet_balance {
     type: sum
     label: "Wallet Balance"
     sql: ${wallet_balance} ;;
+  }
+
+  measure: coin_balance_sum {
+    type: sum
+    label: "Coin Balance"
+    sql: ${coin_balance} ;;
   }
 
 

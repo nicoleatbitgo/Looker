@@ -5,6 +5,7 @@ connection: "snowflake_looker"
 include: "/views/**/rg_wp_metrics.view"
 include: "/views/cw_v2_coin_dash_bal.view.lkml"
 include: "/views/cw_v2_coin_dash_inflow.view.lkml"
+include: "/views/status_time.view.lkml"
 include: "/views/*/*.view.lkml"
 
 datagroup: snowflake_looker_default_datagroup {
@@ -78,4 +79,8 @@ explore: hp_heat_map_wallet_balance {
 
 explore: hp_product_usage_trends {
   label: "Product Usage Trends"
+}
+
+explore: status_time {
+  label: "Blockchain status time"
 }
