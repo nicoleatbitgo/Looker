@@ -1,4 +1,4 @@
-view: aj_status_time {
+view: status_time {
   required_access_grants: [can_view]
   sql_table_name: "LOOKER"."STATUS_TIME"
     ;;
