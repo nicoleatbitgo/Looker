@@ -1,10 +1,10 @@
 view: trade_dash_monthly {
+  required_access_grants: [can_view]
   sql_table_name: "LOOKER"."TRADE_DASH_MONTHLY"
     ;;
 
   dimension: collateral_type {
     type: string
-    required_access_grants: [can_view]
     sql: ${TABLE}."COLLATERAL_TYPE";;
   }
 

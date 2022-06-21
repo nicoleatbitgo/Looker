@@ -1,4 +1,5 @@
 view: hp_enterprise_cleanup {
+  required_access_grants: [can_view]
   sql_table_name: "ANALYTICS"."HP_ENTERPRISE_CLEANUP"
     ;;
 
