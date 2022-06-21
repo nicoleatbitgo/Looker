@@ -1,4 +1,5 @@
 view: hp_wallet_cleanup {
+  required_access_grants: [can_view]
   sql_table_name: "ANALYTICS"."HP_WALLET_CLEANUP"
     ;;
 

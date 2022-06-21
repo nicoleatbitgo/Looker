@@ -1,4 +1,5 @@
 view: ng_daily_wallet_balance {
+  required_access_grants: [can_view]
   sql_table_name: "ANALYTICS"."NG_DAILY_WALLET_BALANCE"
     ;;
 

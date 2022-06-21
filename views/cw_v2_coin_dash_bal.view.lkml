@@ -1,4 +1,5 @@
 view: cw_v2_coin_dash_bal {
+  required_access_grants: [can_view]
   sql_table_name: "LOOKER"."CW_V2_COIN_DASH_BAL"
     ;;
 

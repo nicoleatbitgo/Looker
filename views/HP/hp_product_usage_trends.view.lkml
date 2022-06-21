@@ -1,4 +1,5 @@
 view: hp_product_usage_trends {
+  required_access_grants: [can_view]
   sql_table_name: "LOOKER"."HP_PRODUCT_USAGE_TRENDS"
     ;;
 
