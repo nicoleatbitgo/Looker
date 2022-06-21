@@ -1,4 +1,5 @@
 view: hp_customer_health_score_with_auc {
+  required_access_grants: [can_view]
   sql_table_name: "LOOKER"."HP_CUSTOMER_HEALTH_SCORE_WITH_AUC"
     ;;
 

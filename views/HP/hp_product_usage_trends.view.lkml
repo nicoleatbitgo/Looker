@@ -1,4 +1,5 @@
 view: hp_product_usage_trends {
+  required_access_grants: [can_view]
   sql_table_name: "LOOKER"."HP_PRODUCT_USAGE_TRENDS"
     ;;
 
@@ -138,6 +139,11 @@ view: hp_product_usage_trends {
     sql: ${TABLE}."RECEIVED_USD" ;;
   }
 
+  dimension: received_actual_usd {
+    type: number
+    sql: ${TABLE}."RECEIVED_ACTUAL_USD" ;;
+  }
+
   dimension: sent_coins {
     type: number
     sql: ${TABLE}."SENT_COINS" ;;
@@ -151,6 +157,11 @@ view: hp_product_usage_trends {
   dimension: sent_usd {
     type: number
     sql: ${TABLE}."SENT_USD" ;;
+  }
+
+  dimension: sent_actual_usd {
+    type: number
+    sql: ${TABLE}."SENT_ACTUAL_USD" ;;
   }
 
   dimension_group: transaction {
@@ -252,7 +263,7 @@ view: hp_product_usage_trends {
     link: {
       label: "Explore Enterprise Details"
       # url: "https://bitgoinc.cloud.looker.com/dashboards/32?Enterprise+ID={{ value }}"
-      url: "https://bitgoinc.cloud.looker.com/dashboards/32?Enterprise+ID={{ _filters['hp_product_usage_trends.enterprise_id'] | url_encode }}"
+      url: "https://bitgoinc.cloud.looker.com/dashboards/32?Enterprise+ID={{ value | url_encode }}"
     }
   }
 
@@ -278,6 +289,12 @@ view: hp_product_usage_trends {
     sql: ${sent_usd} ;;
   }
 
+  measure: sent_actual_usd_sum {
+    type: sum
+    label: "Actual Sent USD"
+    sql: ${sent_actual_usd} ;;
+  }
+
   measure: received_transfers_sum {
     type: sum
     label: "Received Transfers"
@@ -294,6 +311,12 @@ view: hp_product_usage_trends {
     type: sum
     label: "Received USD"
     sql: ${received_usd} ;;
+  }
+
+  measure: received_actual_usd_sum {
+    type: sum
+    label: "Actual Received USD"
+    sql: ${received_actual_usd};;
   }
 
 }
