@@ -130,7 +130,7 @@ view: hp_heat_map_wallet_balance {
   measure: coin_balance_sum {
     type: sum
     label: "Coin Balance"
-    sql: ${wallet_balance} ;;
+    sql: ${coin_balance} ;;
   }
 
 
