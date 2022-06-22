@@ -275,7 +275,7 @@ view: hp_product_usage_trends {
     type: sum
     label: "Sent Transfers"
     sql: ${sent_transfers} ;;
-    value_format: "#,###.00"
+    value_format: "#,###"
   }
 
   measure: sent_coins_sum {
@@ -303,7 +303,7 @@ view: hp_product_usage_trends {
     type: sum
     label: "Received Transfers"
     sql: ${received_transfers} ;;
-    value_format: "#,###.00"
+    value_format: "#,###"
   }
 
   measure: received_coins_sum {
