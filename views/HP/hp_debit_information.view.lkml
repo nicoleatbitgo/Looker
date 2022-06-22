@@ -1,5 +1,5 @@
 view: hp_debit_information {
-  required_access_grants: [can_view]
+
   sql_table_name: "LOOKER"."HP_DEBIT_INFORMATION"
     ;;
 

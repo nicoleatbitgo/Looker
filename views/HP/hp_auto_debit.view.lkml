@@ -1,5 +1,5 @@
 view: hp_auto_debit {
-  required_access_grants: [can_view]
+
   sql_table_name: "LOOKER"."HP_AUTO_DEBIT";;
 
   dimension: transaction_id {

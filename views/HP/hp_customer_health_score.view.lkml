@@ -1,5 +1,5 @@
 view: hp_customer_health_score {
-  required_access_grants: [can_view]
+
   sql_table_name: "LOOKER"."HP_CUSTOMER_HEALTH_SCORE"
     ;;
 
