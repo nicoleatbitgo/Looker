@@ -86,7 +86,7 @@ view: cw_v2_coin_dash_inflow {
     END ;;
   }
 
-
+#  measure: count {}
 
   measure: inflow_amt {
     type: sum
