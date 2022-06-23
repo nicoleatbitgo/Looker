@@ -20,7 +20,7 @@ explore: rg_wp_metrics {}
 #feawfewa
 
 
-#Testing explore for the new structure
+#Explore for the new lookml format
 explore: ng_daily_wallet_balance {
 
   label: "Daily Wallet Balance"
@@ -42,7 +42,16 @@ explore: ng_daily_wallet_balance {
   }
 }
 
-# Explores for V2 coin dash
+explore: cw_transfer_cleanup {
+  label: "Transfer Data"
+  }
+
+
+explore: cw_enterprise_level_balance {
+  label: "Daily Enterprise Balance"
+}
+
+# Explores for V2 coin dash (old format)
 explore: cw_v2_coin_dash_bal {
   label: "Coin Dash Balance"
 }
