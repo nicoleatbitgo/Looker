@@ -1,5 +1,5 @@
-view: ng_daily_wallet_balance {
-  sql_table_name: "LOOKER"."NG_DAILY_WALLET_BALANCE"
+view: daily_wallet_balance {
+  sql_table_name: "LOOKER"."DAILY_WALLET_BALANCE"
     ;;
 
   dimension_group: balance {

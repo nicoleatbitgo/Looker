@@ -131,6 +131,11 @@ view: cw_v2_coin_dash_bal {
         END ;;
   }
 
+  dimension: balance_week {
+    type: string
+    sql: case when ${is_last_day_of_week} = 'yes' then ${transaction_date} else null end ;;
+
+  }
 
   parameter: top_n_coins {
     type: string

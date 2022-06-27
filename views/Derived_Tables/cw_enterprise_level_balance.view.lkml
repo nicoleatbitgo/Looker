@@ -4,7 +4,7 @@ view: cw_enterprise_level_balance {
 
     derived_table: {
 
-      explore_source: ng_daily_wallet_balance {
+      explore_source: daily_wallet_balance {
         column: date {}
         column: account_id {}
         column: coin {}
@@ -13,17 +13,17 @@ view: cw_enterprise_level_balance {
 
 
         filters: {
-          field: ng_daily_wallet_balance.date
+          field: daily_wallet_balance.date
           value: "-NULL"
         }
 
         bind_filters: {
-          to_field: ng_daily_wallet_balance.balance_date
+          to_field: daily_wallet_balance.balance_date
           from_field: cw_enterprise_level_balance.balance_date
         }
 
         bind_filters: {
-          to_field: ng_daily_wallet_balance.date_granularity
+          to_field: daily_wallet_balance.date_granularity
           from_field: cw_enterprise_level_balance.date_granularity
         }
 
