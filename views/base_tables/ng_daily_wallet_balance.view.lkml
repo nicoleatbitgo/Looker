@@ -113,6 +113,12 @@ view: ng_daily_wallet_balance {
         END ;;
   }
 
+  dimension: week_date {
+    type: date
+    sql: case when ${is_last_day_of_week} = 'yes' then ${balance_date} else null end ;;
+
+  }
+
   parameter: top_n_coins {
     type: string
     allowed_value: { value: "Top 10 coins" }
@@ -214,5 +220,10 @@ view: ng_daily_wallet_balance {
     type: max
     sql: ${eod_balance} ;;
     value_format: "#,##0"
+  }
+
+  measure: coin_cnt {
+    type: count_distinct
+    sql: ${coin} ;;
   }
 }

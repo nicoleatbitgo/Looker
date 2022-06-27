@@ -40,6 +40,12 @@ explore: ng_daily_wallet_balance {
     sql_on: ${ng_daily_wallet_balance.wallet_id} =  ${hp_wallet_cleanup.wallet_id};;
     relationship: many_to_one
   }
+
+  join: coin_top_ranking {
+    type: inner
+    relationship: many_to_one
+    sql_on: ${ng_daily_wallet_balance.coin} = ${coin_top_ranking.coin};;
+  }
 }
 
 explore: cw_transfer_cleanup {
