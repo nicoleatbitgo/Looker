@@ -1,5 +1,5 @@
 view: hp_product_usage_trends {
-  required_access_grants: [can_view]
+
   sql_table_name: "LOOKER"."HP_PRODUCT_USAGE_TRENDS"
     ;;
 
@@ -275,48 +275,56 @@ view: hp_product_usage_trends {
     type: sum
     label: "Sent Transfers"
     sql: ${sent_transfers} ;;
+    value_format: "#,###"
   }
 
   measure: sent_coins_sum {
     type: sum
     label: "Sent Coins"
     sql: ${sent_coins} ;;
+    value_format: "#,###.00"
   }
 
   measure: sent_usd_sum {
     type: sum
     label: "Sent USD"
     sql: ${sent_usd} ;;
+    value_format: "$#,###.00"
   }
 
   measure: sent_actual_usd_sum {
     type: sum
     label: "Actual Sent USD"
     sql: ${sent_actual_usd} ;;
+    value_format: "$#,###.00"
   }
 
   measure: received_transfers_sum {
     type: sum
     label: "Received Transfers"
     sql: ${received_transfers} ;;
+    value_format: "#,###"
   }
 
   measure: received_coins_sum {
     type: sum
     label: "Received Coins"
     sql: ${received_coins} ;;
+    value_format: "#,###.00"
   }
 
   measure: received_usd_sum {
     type: sum
     label: "Received USD"
     sql: ${received_usd} ;;
+    value_format: "$#,###.00"
   }
 
   measure: received_actual_usd_sum {
     type: sum
     label: "Actual Received USD"
     sql: ${received_actual_usd};;
+    value_format: "$#,###.00"
   }
 
 }

@@ -1,5 +1,5 @@
 view: hp_heat_map_wallet_balance {
-  required_access_grants: [can_view]
+
   sql_table_name: "LOOKER"."HP_HEAT_MAP_WALLET_BALANCE"
     ;;
 
@@ -138,12 +138,14 @@ view: hp_heat_map_wallet_balance {
     type: sum
     label: "Wallet Balance"
     sql: ${wallet_balance} ;;
+    value_format: "$#,###.00"
   }
 
   measure: coin_balance_sum {
     type: sum
     label: "Coin Balance"
     sql: ${coin_balance} ;;
+    value_format: "#,###.00"
   }
 
 

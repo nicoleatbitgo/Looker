@@ -1,51 +1,8 @@
-view: cw_v2_coin_dash_bal {
-
-  sql_table_name: "LOOKER"."CW_V2_COIN_DASH_BAL"
+view: ng_daily_wallet_balance {
+  sql_table_name: "LOOKER"."DAILY_WALLET_BALANCE"
     ;;
 
-  dimension: coin {
-    type: string
-    sql: ${TABLE}."COIN" ;;
-  }
-
-  dimension: coin_balance {
-    type: number
-    sql: ${TABLE}."COIN_BALANCE" ;;
-  }
-
-  dimension: account_id {
-    alias: [enterprise_wallet_coal]
-    description: "Enterprise id for enterprises/ wallet id for paygo"
-    type: string
-    sql: ${TABLE}."ENTERPRISE_WALLET_COAL" ;;
-  }
-
-  dimension: pos_wallet_flag {
-    type: number
-    sql: ${TABLE}."POS_WALLET_FLAG" ;;
-  }
-
-  dimension: enterprise_name {
-    type: string
-    sql: ${TABLE}."ENTERPRISE_NAME" ;;
-  }
-
-  dimension: salesforce_id {
-    type: string
-    sql: ${TABLE}."SALESFORCE_ID" ;;
-  }
-
-  dimension: org_salesforce_id {
-    type: string
-    sql: ${TABLE}."ORG_SALESFORCE_ID" ;;
-  }
-
-  dimension: wallet_coin {
-    type: string
-    sql: ${TABLE}."WALLET_COIN" ;;
-  }
-
-  dimension_group: transaction {
+  dimension_group: balance {
     type: time
     timeframes: [
       raw,
@@ -57,28 +14,41 @@ view: cw_v2_coin_dash_bal {
     ]
     convert_tz: no
     datatype: date
-    sql: ${TABLE}."TRANSACTION_DATE" ;;
+    sql: ${TABLE}."BALANCE_DATE" ;;
   }
 
-  dimension: account_type {
-    alias: [type_flag]
+  dimension: coin {
     type: string
-    sql: ${TABLE}."TYPE_FLAG" ;;
+    sql: ${TABLE}."COIN" ;;
   }
 
-  dimension: bitgo_org {
+  dimension: enterprise_id {
     type: string
-    sql: ${TABLE}. "BITGO_ORG" ;;
+    sql: ${TABLE}."ENTERPRISE_ID" ;;
   }
 
-  dimension: coin_group {
+  dimension: account_id {
+    description: "Enterprise id for enterprises/ wallet id for paygo"
     type: string
-    sql: ${TABLE}. "COIN_GROUP" ;;
+    sql: case when ${enterprise_id}  is not null then ${enterprise_id} else ${wallet_id} end;;
   }
 
-  dimension: usd_balance {
+  dimension: eod_balance {
+    description: "End of day coin balance"
     type: number
-    sql: ${TABLE}."USD_BALANCE" ;;
+    sql: ${TABLE}."EOD_BALANCE" ;;
+  }
+
+  dimension: eod_norm_usd_balance {
+    description: "End of day normalized usd balance"
+    type: number
+    sql: ${TABLE}."EOD_NORM_USD_BALANCE" ;;
+  }
+
+  dimension: eod_usd_balance {
+    description: "End of day usd balance"
+    type: number
+    sql: ${TABLE}."EOD_USD_BALANCE" ;;
   }
 
   dimension: wallet_id {
@@ -91,24 +61,36 @@ view: cw_v2_coin_dash_bal {
     sql: ${TABLE}."WALLET_TYPE" ;;
   }
 
+  dimension: account_type {
+    type: string
+    sql: Case when ${enterprise_id} is not null then 'Enterprise' else 'Paygo' end;;
+  }
+
   dimension: coin_balance_bin {
     type: bin
     bins: [0, 50 ,100, 500,1000, 2000, 3000, 4000, 5000, 10000]
     style: interval
-    sql: ${coin_balance} ;;
+    sql: ${eod_balance} ;;
     value_format: "0"
+  }
+
+
+  dimension: bitgo_org_updated{
+    type: string
+    sql: case when ${TABLE}.enterprise_id is not null then ${hp_enterprise_cleanup.bitgo_org}
+      else 'Paygo' end ;;
   }
 
   dimension: is_last_day_of_month {
     hidden: yes
     type: yesno
-    sql: dayofmonth(DATEADD(day,1,${transaction_date}) ) = 1 ;;
+    sql: dayofmonth(DATEADD(day,1,${balance_date}) ) = 1 ;;
   }
 
   dimension: is_last_day_of_week {
     hidden: yes
     type: yesno
-    sql: dayofweek(DATEADD(day,1,${transaction_date})) = 1 ;;
+    sql: dayofweek(DATEADD(day,1,${balance_date})) = 1 ;;
   }
 
 
@@ -125,15 +107,15 @@ view: cw_v2_coin_dash_bal {
     label_from_parameter: date_granularity
     sql:
         CASE
-          WHEN {% parameter date_granularity %} = 'Day' THEN ${transaction_date}
-          WHEN {% parameter date_granularity %} = 'Week' and ${is_last_day_of_week} = 'yes' THEN ${transaction_date}
-          WHEN {% parameter date_granularity %} = 'Month' and ${is_last_day_of_month} = 'yes' THEN ${transaction_date}
+          WHEN {% parameter date_granularity %} = 'Day' THEN ${balance_date}
+          WHEN {% parameter date_granularity %} = 'Week' and ${is_last_day_of_week} = 'yes' THEN ${balance_date}
+          WHEN {% parameter date_granularity %} = 'Month' and ${is_last_day_of_month} = 'yes' THEN ${balance_date}
         END ;;
   }
 
-  dimension: balance_week {
-    type: string
-    sql: case when ${is_last_day_of_week} = 'yes' then ${transaction_date} else null end ;;
+  dimension: week_date {
+    type: date
+    sql: case when ${is_last_day_of_week} = 'yes' then ${balance_date} else null end ;;
 
   }
 
@@ -165,81 +147,78 @@ view: cw_v2_coin_dash_bal {
     label_from_parameter: metrics
     sql:
        {% if metrics._parameter_value == 'volume' %}
-        ${coin_balance_amt}
+        ${eod_balance_amt}
        {% elsif metrics._parameter_value == 'value' %}
-         ${usd_balance_amt}
+         ${eod_usd_balance_amt}
        {% endif %};;
 
     html:  {% if metrics._parameter_value == 'volume' %}
-    {{rendered_value}}
-    {% elsif metrics._parameter_value == 'value' %}
-    ${{rendered_value}}
-    {% endif %};;
+          {{rendered_value}}
+          {% elsif metrics._parameter_value == 'value' %}
+          ${{rendered_value}}
+          {% endif %};;
 
     value_format: "#,##0"
   }
+
 
   measure: count {
     type: count
     drill_fields: []
   }
 
-  measure: coin_balance_amt {
+  measure: eod_balance_amt {
     type: sum
-    sql: ${coin_balance} ;;
-   value_format: "#,##0"
- #  value_format: "[>=1]#,##0;[>0]0.00;#,##0"
+    sql: ${eod_balance} ;;
+    value_format: "#,##0"
   }
 
-  measure: usd_balance_amt {
+  measure: eod_usd_balance_amt {
     type: sum
-    sql: ${usd_balance} ;;
+    sql: ${eod_usd_balance} ;;
     value_format: "$#,##0"
   }
-
 
   measure: account_cnt {
     type: count_distinct
     sql: ${account_id};;
     value_format: "#,##0"
-
   }
 
   measure: pos_bal_wallet {
     type: sum
-    sql: ${pos_wallet_flag};;
+    sql: case when ${eod_balance} > 0 then 1 else 0 end;;
   }
-
 
   measure: coin_balance_min {
     type: min
-    sql: ${coin_balance} ;;
+    sql: ${eod_balance} ;;
     value_format: "#,##0"
   }
 
   measure: coin_balance_per25 {
     type: percentile
     percentile: 25
-    sql: ${coin_balance} ;;
+    sql: ${eod_balance} ;;
     value_format: "#,##0"
   }
 
   measure: coin_balance_median {
     type: median
-    sql: ${coin_balance} ;;
+    sql: ${eod_balance} ;;
     value_format: "#,##0"
   }
 
   measure: coin_balance_per75 {
     type: percentile
     percentile: 75
-    sql: ${coin_balance} ;;
+    sql: ${eod_balance} ;;
     value_format: "#,##0"
   }
 
   measure: coin_balance_max {
     type: max
-    sql: ${coin_balance} ;;
+    sql: ${eod_balance} ;;
     value_format: "#,##0"
   }
 

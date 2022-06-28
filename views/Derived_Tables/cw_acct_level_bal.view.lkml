@@ -1,5 +1,5 @@
 view: cw_acct_level_bal {
-  required_access_grants: [can_view]
+
   derived_table: {
 
       explore_source: cw_v2_coin_dash_bal {

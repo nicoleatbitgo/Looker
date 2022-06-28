@@ -1,5 +1,5 @@
 view: aj_daily_coin {
-  required_access_grants: [can_view]
+
   sql_table_name: "LOOKER"."AJ_DAILY_COIN"
     ;;
 

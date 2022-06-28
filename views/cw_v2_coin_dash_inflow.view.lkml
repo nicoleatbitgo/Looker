@@ -1,5 +1,5 @@
 view: cw_v2_coin_dash_inflow {
-  required_access_grants: [can_view]
+
   sql_table_name: "LOOKER"."CW_V2_COIN_DASH_INFLOW"
     ;;
 
@@ -86,10 +86,7 @@ view: cw_v2_coin_dash_inflow {
     END ;;
   }
 
-  measure: count {
-    type: count
-    drill_fields: []
-  }
+#  measure: count {}
 
   measure: inflow_amt {
     type: sum
