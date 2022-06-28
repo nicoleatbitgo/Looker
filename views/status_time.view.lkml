@@ -73,6 +73,18 @@ view: status_time {
     sql: ${TABLE}."YR_DT" ;;
   }
 
+  dimension: day_dt {
+    type: number
+    sql: ${TABLE}."DAY_DT" ;;
+  }
+
+
+  dimension: hour_dt {
+    type: number
+    sql: ${TABLE}."HOUR_DT" ;;
+  }
+
+
   measure: count {
     type: sum
     sql: ${cnt} ;;
