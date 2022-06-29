@@ -48,7 +48,7 @@ explore: ng_daily_wallet_balance {
   }
 }
 
-explore: cw_transfer_cleanup {
+explore: transfer_cleanup {
   label: "Transfer Data"
   }
 
