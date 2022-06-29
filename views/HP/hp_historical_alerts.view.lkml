@@ -78,12 +78,12 @@ view: hp_historical_alerts {
     sql: ${TABLE}."PRICING_PLAN" ;;
   }
 
-  # dimension: transaction_datetime {
-  #   type: string
-  #   sql: ${TABLE}."TRANSACTION_DATETIME" ;;
-  # }
+  dimension: transaction_datetime {
+    type: string
+    sql: ${TABLE}."TRANSACTION_DATETIME" ;;
+  }
 
-  dimension_group: transaction_datetime {
+  dimension_group: transaction_date {
     type: time
     timeframes: [
       raw,
@@ -94,7 +94,7 @@ view: hp_historical_alerts {
       quarter,
       year
     ]
-    sql: ${TABLE}."TRANSACTION_DATETIME" ;;
+    sql: ${transaction_datetime} ;;
   }
 
   dimension: transaction_id {
