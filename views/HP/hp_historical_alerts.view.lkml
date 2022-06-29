@@ -19,6 +19,7 @@ view: hp_historical_alerts {
 
   dimension: csm {
     type: string
+    label: "CSM"
     sql: ${TABLE}."CSM" ;;
   }
 
@@ -77,8 +78,22 @@ view: hp_historical_alerts {
     sql: ${TABLE}."PRICING_PLAN" ;;
   }
 
-  dimension: transaction_datetime {
-    type: string
+  # dimension: transaction_datetime {
+  #   type: string
+  #   sql: ${TABLE}."TRANSACTION_DATETIME" ;;
+  # }
+
+  dimension_group: transaction_datetime {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
     sql: ${TABLE}."TRANSACTION_DATETIME" ;;
   }
 
