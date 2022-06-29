@@ -13,6 +13,10 @@ view: status_time {
     sql: ${TABLE}."BITGO_ORG" ;;
   }
 
+  dimension: fee {
+    type: number
+    sql: ${TABLE}."FEE" ;;
+  }
   dimension: cnt {
     type: number
     sql: ${TABLE}."CNT" ;;
@@ -73,6 +77,18 @@ view: status_time {
     sql: ${TABLE}."YR_DT" ;;
   }
 
+  dimension: day_dt {
+    type: number
+    sql: ${TABLE}."DAY_DT" ;;
+  }
+
+
+  dimension: hour_dt {
+    type: number
+    sql: ${TABLE}."HR_DT" ;;
+  }
+
+
   measure: count {
     type: sum
     sql: ${cnt} ;;
@@ -84,6 +100,10 @@ view: status_time {
   }
 
 
+  measure: fee_sum {
+    type: sum
+    sql: ${fee} ;;
+  }
 
 
 

@@ -86,10 +86,7 @@ view: cw_v2_coin_dash_inflow {
     END ;;
   }
 
-  measure: count {
-    type: count
-    drill_fields: []
-  }
+#  measure: count {}
 
   measure: inflow_amt {
     type: sum
