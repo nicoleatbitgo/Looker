@@ -6,6 +6,7 @@ include: "/views/**/rg_wp_metrics.view"
 include: "/views/cw_v2_coin_dash_bal.view.lkml"
 include: "/views/cw_v2_coin_dash_inflow.view.lkml"
 include: "/views/status_time.view.lkml"
+include: "/views/trust_wallet_balance_aging.view.lkml"
 include: "/views/*/*.view.lkml"
 
 datagroup: snowflake_looker_default_datagroup {
@@ -51,6 +52,8 @@ explore: ng_daily_wallet_balance {
 explore: transfer_cleanup {
   label: "Transfer Data"
   }
+
+
 
 
 explore: cw_enterprise_level_balance {
