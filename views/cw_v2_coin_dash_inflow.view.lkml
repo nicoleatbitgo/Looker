@@ -53,7 +53,7 @@ view: cw_v2_coin_dash_inflow {
     sql: ${TABLE}."WALLET_ID" ;;
   }
 
-  dimension: wallet_type {
+  dimension: wallet_type_test {
     type: string
     sql: ${TABLE}."WALLET_TYPE" ;;
   }
