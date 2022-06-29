@@ -53,7 +53,7 @@ view: cw_v2_coin_dash_inflow {
     sql: ${TABLE}."WALLET_ID" ;;
   }
 
-  dimension: wallet_type_test {
+  dimension: wallet_type {
     type: string
     sql: ${TABLE}."WALLET_TYPE" ;;
   }
@@ -63,7 +63,7 @@ view: cw_v2_coin_dash_inflow {
     sql: ${TABLE}. "BITGO_ORG" ;;
   }
 
-  dimension: coin_group_test {
+  dimension: coin_group {
     type: string
     sql: ${TABLE}. "COIN_GROUP" ;;
   }
