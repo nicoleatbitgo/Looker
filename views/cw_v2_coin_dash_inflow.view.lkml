@@ -63,7 +63,7 @@ view: cw_v2_coin_dash_inflow {
     sql: ${TABLE}. "BITGO_ORG" ;;
   }
 
-  dimension: coin_group {
+  dimension: coin_group_test {
     type: string
     sql: ${TABLE}. "COIN_GROUP" ;;
   }
