@@ -1,4 +1,5 @@
 view: rg_wp_metrics {
+
   derived_table: {
     sql: select * from RG_WP_METRICS
       ;;
