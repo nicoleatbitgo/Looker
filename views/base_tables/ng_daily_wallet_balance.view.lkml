@@ -137,8 +137,8 @@ view: ng_daily_wallet_balance {
 
   parameter: metrics {
     type: unquoted
-    allowed_value: { label: "Coin volume" value: "volume" }
-    allowed_value: { label: "Coin USD value" value: "value" }
+    allowed_value: {  label: "Volume"  value: "volume" }
+    allowed_value: {  label: "USD Value" value: "value"  }
   }
 
   measure: metrics_value {

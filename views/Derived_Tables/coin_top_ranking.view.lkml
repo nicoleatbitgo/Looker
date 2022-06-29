@@ -49,11 +49,11 @@ view: coin_top_ranking {
     type: unquoted
     default_value: "volume"
     allowed_value: {
-      label: "Coin volume"
+      label: "Volume"
       value: "volume"
     }
     allowed_value: {
-      label: "Coin USD value"
+      label: "USD value"
       value: "value"
     }
   }
