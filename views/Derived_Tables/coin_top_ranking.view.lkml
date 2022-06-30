@@ -54,11 +54,11 @@ view: coin_top_ranking {
       value: "volume"
     }
     allowed_value: {
-      label: "USD value"
+      label: "USD Value"
       value: "value"
     }
     allowed_value: {
-      label: "Normalized USD value"
+      label: "Normalized USD Value"
       value: "normvalue"
     }
   }
