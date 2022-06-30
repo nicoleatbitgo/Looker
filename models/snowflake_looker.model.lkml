@@ -54,7 +54,7 @@ explore: transfer_cleanup {
   label: "Transfer Data"
   }
 
-
+explore: trust_wallet_balance_aging {}
 
 
 explore: cw_enterprise_level_balance {
