@@ -9,6 +9,7 @@ view: coin_top_ranking {
       column: coin {}
       column: volume {field:ng_daily_wallet_balance.eod_balance_amt}
       column: value {field:ng_daily_wallet_balance.eod_usd_balance_amt}
+      column: normvalue {field: ng_daily_wallet_balance.eod_norm_usd_balance_amt}
 
       derived_column: ranking {
         sql: rank() over (partition by date order by {% parameter metrics %} desc) ;;
@@ -56,6 +57,10 @@ view: coin_top_ranking {
       label: "USD value"
       value: "value"
     }
+    allowed_value: {
+      label: "Normalized USD value"
+      value: "normvalue"
+    }
   }
 
   dimension: num_coins {
@@ -101,11 +106,15 @@ view: coin_top_ranking {
         ${ng_daily_wallet_balance.eod_balance_amt}
        {% elsif metrics._parameter_value == 'value' %}
           ${ng_daily_wallet_balance.eod_usd_balance_amt}
+       {% elsif metrics._parameter_value == 'normvalue' %}
+          ${ng_daily_wallet_balance.eod_norm_usd_balance_amt}
        {% endif %};;
 
     html:  {% if metrics._parameter_value == 'volume' %}
           {{rendered_value}}
           {% elsif metrics._parameter_value == 'value' %}
+          ${{rendered_value}}
+          {% elsif metrics._parameter_value == 'normvalue' %}
           ${{rendered_value}}
           {% endif %};;
 
