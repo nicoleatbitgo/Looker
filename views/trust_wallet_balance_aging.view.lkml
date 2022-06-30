@@ -23,21 +23,25 @@ view: trust_wallet_balance_aging {
   }
 
   dimension: days_over_100_mn {
+    hidden: yes
     type: number
     sql: ${TABLE}."DAYS_OVER_100MN" ;;
   }
 
   dimension: days_over_150_mn {
+    hidden: yes
     type: number
     sql: ${TABLE}."DAYS_OVER_150MN" ;;
   }
 
   dimension: days_over_200_mn {
+    hidden: yes
     type: number
     sql: ${TABLE}."DAYS_OVER_200MN" ;;
   }
 
   dimension: days_over_250_mn {
+    hidden: yes
     type: number
     sql: ${TABLE}."DAYS_OVER_250MN" ;;
   }
@@ -88,6 +92,26 @@ view: trust_wallet_balance_aging {
   measure: count {
     type: count
     drill_fields: [enterprise_name]
+  }
+
+  measure: days_over_100mn {
+    type: sum
+    sql: ${days_over_100_mn} ;;
+  }
+
+ measure: days_over_150mn {
+    type: sum
+    sql: ${days_over_150_mn} ;;
+  }
+
+  measure: days_over_200mn {
+    type: sum
+    sql: ${days_over_200_mn} ;;
+  }
+
+  measure: days_over_250mn {
+    type: sum
+    sql: ${days_over_250_mn} ;;
   }
 
 }
