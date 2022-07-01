@@ -89,6 +89,7 @@ view: status_time {
   }
 
 
+
   measure: count {
     type: sum
     sql: ${cnt} ;;
