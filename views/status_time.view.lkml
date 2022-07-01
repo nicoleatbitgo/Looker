@@ -99,12 +99,31 @@ view: status_time {
     sql: ${created_confirmed_s} ;;
   }
 
+  measure: created_confirmed_avg {
+    type: average
+    sql: ${created_confirmed_s} ;;
+  }
+
+  measure: created_confirmed_median {
+    type: median
+    sql: ${created_confirmed_s} ;;
+  }
+
 
   measure: fee_sum {
     type: sum
     sql: ${fee} ;;
   }
 
+  measure: fee_avg {
+    type: average
+    sql: ${fee} ;;
+  }
+
+  measure: fee_median {
+    type: median
+    sql: ${fee} ;;
+  }
 
 
 
