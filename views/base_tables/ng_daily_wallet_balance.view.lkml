@@ -137,8 +137,9 @@ view: ng_daily_wallet_balance {
 
   parameter: metrics {
     type: unquoted
-    allowed_value: { label: "Coin volume" value: "volume" }
-    allowed_value: { label: "Coin USD value" value: "value" }
+    allowed_value: {  label: "Volume"  value: "volume" }
+    allowed_value: {  label: "USD Value" value: "value"  }
+    allowed_value: {  label: "Normalized USD Value" value: "normvalue" }
   }
 
   measure: metrics_value {
@@ -150,11 +151,15 @@ view: ng_daily_wallet_balance {
         ${eod_balance_amt}
        {% elsif metrics._parameter_value == 'value' %}
          ${eod_usd_balance_amt}
+       {% elsif metrics._parameter_value == 'normvalue' %}
+         ${eod_norm_usd_balance_amt}
        {% endif %};;
 
     html:  {% if metrics._parameter_value == 'volume' %}
           {{rendered_value}}
           {% elsif metrics._parameter_value == 'value' %}
+          ${{rendered_value}}
+          {% elsif metrics._parameter_value == 'normvalue' %}
           ${{rendered_value}}
           {% endif %};;
 
@@ -176,6 +181,12 @@ view: ng_daily_wallet_balance {
   measure: eod_usd_balance_amt {
     type: sum
     sql: ${eod_usd_balance} ;;
+    value_format: "$#,##0"
+  }
+
+  measure: eod_norm_usd_balance_amt {
+    type: sum
+    sql: ${eod_norm_usd_balance} ;;
     value_format: "$#,##0"
   }
 
