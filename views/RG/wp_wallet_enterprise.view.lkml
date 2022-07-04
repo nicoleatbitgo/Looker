@@ -299,6 +299,5 @@ view: wp_wallet_enterprise {
   measure: num_act_enterprise {
     type: count_distinct
     sql: case when ${activation_date} is not null then ${enterprise_id} end;;
-
   }
 }
