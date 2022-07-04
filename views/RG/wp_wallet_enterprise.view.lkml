@@ -285,6 +285,11 @@ view: wp_wallet_enterprise {
     sql: ${TABLE}."WALLET_TYPE" ;;
   }
 
+  dimension: wallet_id {
+    type: string
+    sql: ${TABLE}."WALLET_ID" ;;
+  }
+
   measure: count {
     type: count
     drill_fields: [enterprise_name]
@@ -296,8 +301,107 @@ view: wp_wallet_enterprise {
     sql: ${enterprise_id};;
   }
 
-  measure: num_act_enterprise {
+  measure: num_paygo_wallets {
     type: count_distinct
-    sql: case when ${activation_date} is not null then ${enterprise_id} end;;
+    sql: case when ${enterprise_id} is null then ${wallet_id} end;;
+  }
+
+  measure: num_enterprise_wallets {
+    type: count_distinct
+    sql: case when ${enterprise_id} is not null then ${wallet_id} end;;
+  }
+
+  measure: num_ent_act_wallets {
+    type: count_distinct
+    sql: case when ${enterprise_id} is not null and ${activation_date} is not null then ${wallet_id} end;;
+  }
+
+  measure: num_paygo_act_wallets {
+    type: count_distinct
+    sql: case when ${enterprise_id} is null and ${activation_date} is not null then ${wallet_id} end;;
+  }
+
+  measure: num_act_wallets {
+    type: count_distinct
+    sql: case when ${activation_date} is not null then ${wallet_id} end;;
+  }
+
+  measure: num_ent_with_wallets {
+    type: count_distinct
+    sql: case when ${wallet_id} is not null then ${enterprise_id} end;;
+  }
+
+  measure: num_ent_positive_bal {
+    type: count_distinct
+    sql: case when ${positive_balance}=1 then ${enterprise_id} end;;
+  }
+
+  dimension: 60d_ent_denom_flag {
+    type: string
+    sql: case when datediff(day,${enterprise_datetime_time},${refresh_date}) > 60 and
+    datediff(day,${enterprise_datetime_time},${refresh_date}) <= 90
+    then '1' else '0' end ;;
+  }
+
+  measure: 60d_act_num_ent {
+    type: count_distinct
+    sql: case when datediff(day,${enterprise_datetime_time},${activation_time})<=60 and
+    datediff(day,${enterprise_datetime_time},${refresh_date}) > 60 and
+    datediff(day,${enterprise_datetime_time},${refresh_date}) <= 90
+    then ${enterprise_id} end;;
+  }
+
+  measure: 60d_act_den_ent {
+    type: count_distinct
+    sql: case when  datediff(day,${enterprise_datetime_time},${refresh_date}) > 60 and
+    datediff(day,${enterprise_datetime_time},${refresh_date}) <= 90
+    then ${enterprise_id} end;;
+  }
+
+  measure: 60d_act_rate_ent {
+    type:sum_distinct
+    sql_distinct_key: ${enterprise_id} ;;
+    filters: [60d_ent_denom_flag: "1"]
+    sql: ${60d_act_num_ent}/${60d_act_den_ent} ;;
+    value_format: "0.0%"
+  }
+
+  dimension: wallet_setup_base {
+    type: string
+    sql: case when datediff(day,${wallet_datetime_time},${refresh_date}) <= 30
+    and datediff(day,${wallet_datetime_time},${refresh_date}) > 0 then 1 else 0 end ;;
+  }
+
+  measure: days_to_wallet_setup {
+    type: median_distinct
+    sql_distinct_key: ${enterprise_id} ;;
+    filters: [wallet_datetime_time: "-NULL",wallet_setup_base: "1"]
+    sql:  datediff(day,${enterprise_datetime_time},${wallet_datetime_time});;
+  }
+
+  dimension: activation_base {
+    type: string
+    sql: case when datediff(day,${activation_time},${refresh_date}) <= 30
+      and datediff(day,${activation_time},${refresh_date}) > 0 then 1 else 0 end ;;
+  }
+
+  measure: days_to_activation {
+    type: median_distinct
+    sql_distinct_key: ${enterprise_id} ;;
+    filters: [activation_base: "1"]
+    sql:  datediff(day,${enterprise_datetime_time},${activation_time});;
+  }
+
+  dimension: policy_setup_base {
+    type: string
+    sql: case when datediff(day,${policy_datetime_time},${refresh_date}) <= 30
+      and datediff(day,${policy_datetime_time},${refresh_date}) > 0 then 1 else 0 end ;;
+  }
+
+  measure: days_to_setup_policy {
+    type: median_distinct
+    sql_distinct_key: ${enterprise_id} ;;
+    filters: [policy_setup_base: "1"]
+    sql:  datediff(day,${enterprise_datetime_time},${policy_datetime_time});;
   }
 }
