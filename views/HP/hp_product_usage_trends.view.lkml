@@ -262,7 +262,8 @@ view: hp_product_usage_trends {
     sql: ${TABLE}."ENTERPRISE_ID" ;;
     link: {
       label: "Filter on Dashboard"
-      url : "https://bitgoinc.cloud.looker.com/dashboards/29?Date+Granularity=Day&Enterprise+ID={{ value | url_encode }}&Bitgo+Org=&Wallet+Type=&Transaction+Date=2022%2F06%2F01+to+2022%2F06%2F17&Coin=&CSM=&Enterprise+Name="
+      # url : "https://bitgoinc.cloud.looker.com/dashboards/29?Date+Granularity=&Enterprise+ID={{ value | url_encode }}&Bitgo+Org=&Wallet+Type=&Transaction+Date=2022%2F06%2F01+to+2022%2F06%2F17&Coin=&CSM=&Enterprise+Name="
+      url : "https://bitgoinc.cloud.looker.com/dashboards/29?Date+Granularity=&Enterprise+ID={{ value | url_encode }}&Bitgo+Org=&Wallet+Type=&Transaction+Date=&Coin=&CSM=&Enterprise+Name="
     }
     link: {
       label: "Explore Enterprise Details"
