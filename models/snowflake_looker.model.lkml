@@ -50,6 +50,17 @@ explore: ng_daily_wallet_balance {
   }
 }
 
+explore: rg_enterprise_creation_weekly {
+
+  label: "Weekly Enterprise Data"
+
+  join: rg_wallet_creation_weekly {
+    type: full_outer
+    sql_on: ${rg_enterprise_creation_weekly.enterprise_id}=${rg_wallet_creation_weekly.enterprise_id};;
+    relationship: one_to_many
+  }
+}
+
 explore: transfer_cleanup {
   label: "Transfer Data"
   }
@@ -98,10 +109,6 @@ explore: hp_customer_health_score_with_auc {
   label: "Customer Health Score with Product Usage"
 }
 
-explore: rg_check {
-  label: "RG Test"
-}
-
 explore: trade_dash_monthly {
   label: "RG trade_dash_monthly"
 }
@@ -120,4 +127,18 @@ explore: hp_product_usage_trends {
 
 explore: status_time {
   label: "Blockchain status time"
+}
+
+explore: txn_behav_7day {
+  label: "Daily Wallet Transfers"
+
+  join: rg_transfer_wallet_daily {
+    type: left_outer
+    sql_on: ${txn_behav_7day.transfer_date}=${rg_transfer_wallet_daily.transfer_date};;
+    relationship: one_to_many
+  }
+}
+
+explore: user_base {
+  label: "User Data"
 }
