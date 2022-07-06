@@ -3,8 +3,6 @@ connection: "snowflake_looker"
 # include all the views
 
 include: "/views/**/rg_wp_metrics.view"
-include: "/views/cw_v2_coin_dash_bal.view.lkml"
-include: "/views/cw_v2_coin_dash_inflow.view.lkml"
 include: "/views/status_time.view.lkml"
 include: "/views/trust_wallet_balance_aging.view.lkml"
 include: "/views/*/*.view.lkml"
@@ -70,19 +68,6 @@ explore: trust_wallet_balance_aging {}
 
 explore: cw_enterprise_level_balance {
   label: "Daily Enterprise Balance"
-}
-
-# Explores for V2 coin dash (old format)
-explore: cw_v2_coin_dash_bal {
-  label: "Coin Dash Balance"
-}
-
-explore: cw_v2_coin_dash_inflow {
-  label: "Coin Dash Inflow/Outflow"
-}
-
-explore: cw_acct_level_bal {
-  label: "Coin Dash Account"
 }
 
 explore: hp_transaction_count {
