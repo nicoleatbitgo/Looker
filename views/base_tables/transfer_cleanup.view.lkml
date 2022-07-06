@@ -1,4 +1,4 @@
-view: cw_transfer_cleanup {
+view: transfer_cleanup {
   sql_table_name: "LOOKER"."CW_TRANSFER_CLEANUP"
     ;;
 

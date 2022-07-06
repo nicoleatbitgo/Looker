@@ -157,6 +157,7 @@ view: hp_debit_information {
   measure: custodial_debit_sum {
     type: sum
     label: "Custodial Debit"
+    value_format: "#,###"
     sql: ${custodial_debit} ;;
   }
 
