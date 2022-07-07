@@ -58,6 +58,11 @@ view: hp_product_usage_trends {
     sql: ${TABLE}."CANCREATEOFFCHAINWALLET" ;;
   }
 
+  dimension: wallet_coin {
+    type: string
+    sql: ${TABLE}."WALLET_COIN" ;;
+  }
+
   dimension: coin {
     type: string
     sql: ${TABLE}."COIN" ;;
