@@ -18,6 +18,11 @@ view: hp_heat_map_sent_transfers {
     sql: ${TABLE}."BITGO_ORG" ;;
   }
 
+  dimension: wallet_coin {
+    type: string
+    sql: ${TABLE}."WALLET_COIN" ;;
+  }
+
   dimension: coin {
     type: string
     sql: ${TABLE}."COIN" ;;
