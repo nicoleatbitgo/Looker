@@ -74,12 +74,16 @@ explore: hp_transaction_count {
   label: "Transaction Count - Enterprise Level"
 }
 
-explore: hp_auto_debit {
-  label: "Auto Debit Alert"
-}
+# explore: hp_auto_debit {
+#   label: "Auto Debit Alert"
+# }
 
 explore: hp_debit_information {
   label: "Debit Alert Information"
+}
+
+explore: hp_historical_alerts {
+  label: "Historical Debit Alerts"
 }
 
 explore: aj_daily_coin {
