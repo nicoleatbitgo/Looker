@@ -22,4 +22,5 @@ view: cw_coin_units_adj {
     type: count
     drill_fields: []
   }
+
 }

@@ -3,8 +3,6 @@ connection: "snowflake_looker"
 # include all the views
 
 include: "/views/**/rg_wp_metrics.view"
-include: "/views/cw_v2_coin_dash_bal.view.lkml"
-include: "/views/cw_v2_coin_dash_inflow.view.lkml"
 include: "/views/status_time.view.lkml"
 include: "/views/trust_wallet_balance_aging.view.lkml"
 include: "/views/*/*.view.lkml"
@@ -50,6 +48,17 @@ explore: ng_daily_wallet_balance {
   }
 }
 
+explore: rg_enterprise_creation_weekly {
+
+  label: "Weekly Enterprise Data"
+
+  join: rg_wallet_creation_weekly {
+    type: full_outer
+    sql_on: ${rg_enterprise_creation_weekly.enterprise_id}=${rg_wallet_creation_weekly.enterprise_id};;
+    relationship: one_to_many
+  }
+}
+
 explore: transfer_cleanup {
   label: "Transfer Data"
   }
@@ -59,19 +68,6 @@ explore: trust_wallet_balance_aging {}
 
 explore: cw_enterprise_level_balance {
   label: "Daily Enterprise Balance"
-}
-
-# Explores for V2 coin dash (old format)
-explore: cw_v2_coin_dash_bal {
-  label: "Coin Dash Balance"
-}
-
-explore: cw_v2_coin_dash_inflow {
-  label: "Coin Dash Inflow/Outflow"
-}
-
-explore: cw_acct_level_bal {
-  label: "Coin Dash Account"
 }
 
 explore: hp_transaction_count {
@@ -98,10 +94,6 @@ explore: hp_customer_health_score_with_auc {
   label: "Customer Health Score with Product Usage"
 }
 
-explore: rg_check {
-  label: "RG Test"
-}
-
 explore: trade_dash_monthly {
   label: "RG trade_dash_monthly"
 }
@@ -120,4 +112,18 @@ explore: hp_product_usage_trends {
 
 explore: status_time {
   label: "Blockchain status time"
+}
+
+explore: txn_behav_7day {
+  label: "Daily Wallet Transfers"
+
+  join: rg_transfer_wallet_daily {
+    type: left_outer
+    sql_on: ${txn_behav_7day.transfer_date}=${rg_transfer_wallet_daily.transfer_date};;
+    relationship: one_to_many
+  }
+}
+
+explore: user_base {
+  label: "User Data"
 }
