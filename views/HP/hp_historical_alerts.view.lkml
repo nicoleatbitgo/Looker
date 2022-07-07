@@ -1,6 +1,5 @@
 view: hp_historical_alerts {
-  sql_table_name: "LOOKER"."HP_HISTORICAL_ALERTS"
-    ;;
+  sql_table_name: "LOOKER"."HP_HISTORICAL_ALERTS" ;;
 
   dimension: account_owner {
     type: string

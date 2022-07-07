@@ -78,12 +78,30 @@ explore: hp_transaction_count {
 #   label: "Auto Debit Alert"
 # }
 
-explore: hp_debit_information {
-  label: "Debit Alert Information"
+# explore: hp_debit_information {
+#   label: "Debit Alert Information"
+# }
+
+
+datagroup: refreshing_schedule {
+  max_cache_age: "4 hours"
+  sql_trigger: SELECT CASE
+               WHEN EXTRACT(HOUR FROM CURRENT_TIMESTAMP) >= 1 AND EXTRACT(HOUR FROM CURRENT_TIMESTAMP) < 5 THEN 'between 1am and 5am'
+               WHEN EXTRACT(HOUR FROM CURRENT_TIMESTAMP) >= 5 AND EXTRACT(HOUR FROM CURRENT_TIMESTAMP) < 9 THEN 'between 5am and 9am'
+               WHEN EXTRACT(HOUR FROM CURRENT_TIMESTAMP) >= 9 AND EXTRACT(HOUR FROM CURRENT_TIMESTAMP) < 13 THEN 'between 9am and 1pm'
+               WHEN EXTRACT(HOUR FROM CURRENT_TIMESTAMP) >= 13 AND EXTRACT(HOUR FROM CURRENT_TIMESTAMP) < 17 THEN 'between 1pm and 5pm'
+               WHEN EXTRACT(HOUR FROM CURRENT_TIMESTAMP) >= 17 AND EXTRACT(HOUR FROM CURRENT_TIMESTAMP) < 21 THEN 'between 5pm and 9pm'
+               ELSE 'between 9pm and 1am'
+               END ;;
+  label: "Refresh table every 4 hours"
+  description: "Refresh this table every 4 hours to capture the transactions that have been received in the previous 4 hours"
 }
+
 
 explore: hp_historical_alerts {
   label: "Historical Debit Alerts"
+  sql_always_where: ${transaction_datetime_time} between dateadd(hour, -5, current_timestamp()) and current_timestamp() ;;
+  persist_with: refreshing_schedule
 }
 
 explore: aj_daily_coin {
