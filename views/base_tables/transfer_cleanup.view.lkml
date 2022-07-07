@@ -144,4 +144,14 @@ view: transfer_cleanup {
     filters: [type: "send" , state: "confirmed"]
     value_format: "#,##0"
   }
+
+  measure: first_transfer_date {
+    type: date
+    sql: MIN(${transfer_date}) ;;
+  }
+
+   measure: last_transfer_date {
+    type: date
+    sql: MAX(${transfer_date}) ;;
+  }
 }
