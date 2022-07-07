@@ -23,5 +23,4 @@ view: cw_coin_units_adj {
     drill_fields: []
   }
 
-  measure: test {}
 }

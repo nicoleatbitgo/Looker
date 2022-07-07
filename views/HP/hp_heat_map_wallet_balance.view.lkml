@@ -38,6 +38,11 @@ view: hp_heat_map_wallet_balance {
     sql: ${TABLE}."COIN" ;;
   }
 
+  dimension: wallet_coin {
+    type: string
+    sql: ${TABLE}."WALLET_COIN" ;;
+  }
+
   dimension: csm {
     type: string
     label: "CSM"
@@ -78,6 +83,16 @@ view: hp_heat_map_wallet_balance {
     type: string
     sql: ${TABLE}."UPFRONT_PAYMENT_STATUS" ;;
   }
+
+
+# This is the actual usd wallet balance
+
+  dimension: actual_wallet_balance {
+    type: number
+    sql: ${TABLE}."ACTUAL_WALLET_BALANCE" ;;
+  }
+
+# This is the normalized wallet balance
 
   dimension: wallet_balance {
     type: number
@@ -133,6 +148,18 @@ view: hp_heat_map_wallet_balance {
   measure: count {
     type: count
   }
+
+
+# This is the actual usd wallet balance
+
+  measure: actual_balance_sum {
+    type: sum
+    label: "Actual Wallet Balance"
+    sql: ${actual_wallet_balance} ;;
+    value_format: "$#,###.00"
+  }
+
+# This is the normalized wallet balance
 
   measure: wallet_balance_sum {
     type: sum
