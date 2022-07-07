@@ -83,6 +83,8 @@ explore: hp_transaction_count {
 # }
 
 
+# Creating a refreshing schedule for Debit Alert using datagroup function
+
 datagroup: refreshing_schedule {
   max_cache_age: "4 hours"
   sql_trigger: SELECT CASE
