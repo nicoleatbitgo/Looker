@@ -8,9 +8,9 @@ view: status_time {
     sql: ${TABLE}."APPROVED_FLAG" ;;
   }
 
-  dimension: txid {
+  dimension: ID {
     type: string
-    sql: ${TABLE}."TXID" ;;
+    sql: ${TABLE}."ID" ;;
   }
 
   dimension: bitgo_org {
