@@ -61,6 +61,19 @@ explore: rg_enterprise_creation_weekly {
 
 explore: transfer_cleanup {
   label: "Transfer Data"
+
+  join: hp_enterprise_cleanup {
+    type: left_outer
+    sql_on: ${transfer_cleanup.enterprise_id} = ${hp_enterprise_cleanup.enterprise_id};;
+    relationship: many_to_one
+  }
+
+  join: hp_wallet_cleanup {
+    type: left_outer
+    sql_on: ${transfer_cleanup.wallet_id} =  ${hp_wallet_cleanup.wallet_id};;
+    relationship: many_to_one
+  }
+
   }
 
 explore: trust_wallet_balance_aging {}
