@@ -10,7 +10,7 @@ view: status_time {
 
   dimension: txid {
     type: string
-    sql: ${TABLE}."txid" ;;
+    sql: ${TABLE}."TXID" ;;
   }
 
   dimension: bitgo_org {
