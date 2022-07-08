@@ -8,6 +8,11 @@ view: status_time {
     sql: ${TABLE}."APPROVED_FLAG" ;;
   }
 
+  dimension: txid {
+    type: string
+    sql: ${TABLE}."txid" ;;
+  }
+
   dimension: bitgo_org {
     type: string
     sql: ${TABLE}."BITGO_ORG" ;;
