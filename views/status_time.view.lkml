@@ -13,6 +13,11 @@ view: status_time {
     sql: ${TABLE}."ID" ;;
   }
 
+  dimension: TXID {
+    type: string
+    sql: ${TABLE}."TXID" ;;
+  }
+
   dimension: bitgo_org {
     type: string
     sql: ${TABLE}."BITGO_ORG" ;;
