@@ -77,6 +77,7 @@ view: status_time {
     sql: ${TABLE}."WEEK_DT" ;;
   }
 
+
   dimension: yr_dt {
     type: number
     sql: ${TABLE}."YR_DT" ;;
