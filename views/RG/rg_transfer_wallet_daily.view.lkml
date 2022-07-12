@@ -127,8 +127,48 @@ view: rg_transfer_wallet_daily {
     sql: ${TABLE}."WALLET_TYPE" ;;
   }
 
+  dimension: outside_bitgo_final_no_coins_dimension {
+    hidden: yes
+    type: number
+   sql: ${TABLE}."OUTSIDE_BITGO_FINAL_NO_COINS" ;;
+  }
+
+  dimension: outside_bitgo_final_usd_dimension {
+    hidden: yes
+    type: number
+    sql: ${TABLE}."OUTSIDE_BITGO_FINAL_USD" ;;
+  }
+
   measure: count {
     type: count
     drill_fields: []
+  }
+
+  measure: inflow_from_outside_Bitgo{
+    type: sum
+    sql: abs(${outside_bitgo_final_no_coins_dimension}) ;;
+    filters: [type: "receive"]
+    value_format: "#,##0.00"
+  }
+
+  measure: outflow_to_outside_Bitgo{
+    type: sum
+    sql: abs(${outside_bitgo_final_no_coins_dimension}) ;;
+    filters: [type: "send"]
+    value_format: "#,##0.00"
+  }
+
+  measure: inflow_to_outside_Bitgo_USD{
+    type: sum
+    sql: abs(${outside_bitgo_final_usd_dimension}) ;;
+    filters: [type: "receive"]
+    value_format: "$#,##0.00"
+  }
+
+  measure: outflow_to_outside_Bitgo_USD{
+    type: sum
+    sql: abs(${outside_bitgo_final_usd_dimension}) ;;
+    filters: [type: "send"]
+    value_format: "$#,##0.00"
   }
 }

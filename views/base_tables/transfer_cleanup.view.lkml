@@ -42,7 +42,8 @@ view: transfer_cleanup {
     sql: ${TABLE}."ISREWARD" ;;
   }
 
-  dimension: no_coins {
+  dimension: coin_volume {
+    alias: [no_coins]
     type: number
     sql: ${TABLE}."NO_COINS" ;;
   }
@@ -132,15 +133,17 @@ view: transfer_cleanup {
   }
 
   measure: inflow {
+    description: "Confirmed receive transfers amount"
     type: sum
-    sql: ${no_coins} ;;
+    sql: ${coin_volume} ;;
     filters: [type: "receive", state: "confirmed"]
     value_format: "#,##0"
   }
 
   measure: outflow {
+    description: "Confirmed send transfers amount"
     type: sum
-    sql: abs(${no_coins}) ;;
+    sql: abs(${coin_volume}) ;;
     filters: [type: "send" , state: "confirmed"]
     value_format: "#,##0"
   }
@@ -153,5 +156,16 @@ view: transfer_cleanup {
    measure: last_transfer_date {
     type: date
     sql: MAX(${transfer_date}) ;;
+  }
+
+  measure: coin_value {
+    type: sum
+    sql: ${value} ;;
+  }
+
+  measure: total_coin_volume {
+    type: sum
+    sql: ${coin_volume} ;;
+    value_format: "#,##0"
   }
 }
